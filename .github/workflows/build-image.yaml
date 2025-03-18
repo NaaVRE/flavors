@@ -1,0 +1,81 @@
+name: Build image
+
+on:
+  workflow_call:
+    inputs:
+      dockerfile:
+        description: 'Docker file'
+        type: string
+        required: true
+      flavor_dir:
+        description: 'Flavor directory'
+        type: string
+        required: true
+      image_name:
+        description: 'Docker image name'
+        type: string
+        required: true
+      image_repo:
+        description: 'Docker image repo'
+        type: string
+        required: true
+      image_version:
+        description: 'Docker image version'
+        type: string
+        required: true
+      free_disk_space:
+        description: 'Free disk space on the action runner before running jobs'
+        type: boolean
+        required: false
+        default: false
+
+jobs:
+  build:
+    name: Build ${{ inputs.image_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Free Up GitHub Actions Ubuntu Runner Disk Space
+        uses: jlumbroso/free-disk-space@v1.3.1
+        with:
+          tool-cache: false
+          android: true
+          dotnet: true
+          haskell: true
+          large-packages: true
+          docker-images: false
+          swap-storage: true
+        if: ${{ inputs.free_disk_space }}
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - id: find-dockerfile
+        name: Find Dockerfile
+        run: |
+          # Choose the {inputs.flavor_dir}/{inputs.dockerfile} if it exists,
+          # otherwise fall-back to docker/{inputs.dockerfile}
+          dockerfile="${{ inputs.flavor_dir }}/${{ inputs.dockerfile }}"
+          [ -f "$dockerfile" ] || dockerfile="./docker/${{ inputs.dockerfile }}"
+          echo "dockerfile=$dockerfile" | tee -a $GITHUB_OUTPUT
+
+      - name: Build docker
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ${{ steps.find-dockerfile.outputs.dockerfile }}
+          build-args: |
+            CONDA_ENV_FILE=${{ inputs.flavor_dir }}/environment.yaml
+          tags: ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }},${{ inputs.image_repo }}/${{ inputs.image_name }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=min
+          outputs: type=docker,dest=/tmp/${{ inputs.image_name }}.tar
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.image_name }}
+          path: /tmp/${{ inputs.image_name }}.tar
+          retention-days: 1

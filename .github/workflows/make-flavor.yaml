@@ -1,0 +1,89 @@
+name: Make flavor
+
+on:
+  workflow_call:
+    inputs:
+      flavor_name:
+        description: 'NaaVRE flavor name'
+        type: string
+        required: true
+      image_repo:
+        description: 'Docker image repo'
+        type: string
+        required: true
+      image_version:
+        description: 'Docker image version'
+        type: string
+        required: true
+      build_jupyter:
+        description: 'Whether to build the NaaVRE Jupyter images'
+        type: boolean
+        required: true
+      free_disk_space:
+        description: 'Free disk space on the action runner before running jobs'
+        type: boolean
+        required: true
+
+jobs:
+  build-cell-build:
+    uses: ./.github/workflows/build-image.yaml
+    with:
+      dockerfile: cell-build.Dockerfile
+      flavor_dir: './flavors/${{ inputs.flavor_name }}'
+      image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
+      image_repo: ${{ inputs.image_repo }}
+      image_version: ${{ inputs.image_version }}
+
+  build-cell-runtime:
+    uses: ./.github/workflows/build-image.yaml
+    with:
+      dockerfile: cell-runtime.Dockerfile
+      flavor_dir: './flavors/${{ inputs.flavor_name }}'
+      image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
+      image_repo: ${{ inputs.image_repo }}
+      image_version: ${{ inputs.image_version }}
+
+  build-jupyter:
+    uses: ./.github/workflows/build-image.yaml
+    with:
+      dockerfile: jupyter.Dockerfile
+      flavor_dir: './flavors/${{ inputs.flavor_name }}'
+      image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
+      image_repo: ${{ inputs.image_repo }}
+      image_version: ${{ inputs.naavre_version }}-${{ inputs.image_version }}
+      free_disk_space: ${{ inputs.free_disk_space }}
+    if: ${{ inputs.build_jupyter }}
+
+  test:
+    uses: ./.github/workflows/test-naavre-cell.yaml
+    needs: [build-cell-build, build-cell-runtime]
+    with:
+      image_name_build: naavre-fl-${{ inputs.flavor_name }}-cell-build
+      image_name_runtime: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
+      image_repo: ${{ inputs.image_repo }}
+      tests_dir: './flavors/${{ inputs.flavor_name }}/tests/'
+
+  push-cell-build:
+    uses: ./.github/workflows/push-image.yaml
+    needs: [build-cell-build, test]
+    with:
+      image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
+      image_repo: ${{ inputs.image_repo }}
+    if: ${{ github.event_name == 'release' }}
+
+  push-cell-runtime:
+    uses: ./.github/workflows/push-image.yaml
+    needs: [build-cell-runtime, test]
+    with:
+      image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
+      image_repo: ${{ inputs.image_repo }}
+    if: ${{ github.event_name == 'release' }}
+
+  push-jupyter:
+    uses: ./.github/workflows/push-image.yaml
+    needs: [build-jupyter, test]
+    with:
+      image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
+      image_repo: ${{ inputs.image_repo }}
+      free_disk_space: ${{ inputs.free_disk_space }}
+    if: ${{ github.event_name == 'release' && inputs.build_jupyter }}
