@@ -50,7 +50,7 @@ jobs:
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
       image_repo: ${{ inputs.image_repo }}
-      image_version: ${{ inputs.naavre_version }}-${{ inputs.image_version }}
+      image_version: ${{ inputs.image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
     if: ${{ inputs.build_jupyter }}
 
