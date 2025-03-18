@@ -11,8 +11,16 @@ on:
         description: 'Docker image name for runtime stage'
         type: string
         required: true
+      image_name:
+        description: 'Docker image name'
+        type: string
+        required: true
       image_repo:
         description: 'Docker image repo'
+        type: string
+        required: true
+      image_version:
+        description: 'Docker image version'
         type: string
         required: true
       tests_dir:
@@ -25,28 +33,6 @@ jobs:
     name: Test ${{ inputs.image_name }}
     runs-on: ubuntu-latest
     steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ inputs.image_name_build }}
-          path: /tmp
-
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: ${{ inputs.image_name_runtime }}
-          path: /tmp
-
-      - name: Load image
-        run: |
-          docker load --input /tmp/${{ inputs.image_name_build }}.tar
-          docker image ls -a
-
-      - name: Load image
-        run: |
-          docker load --input /tmp/${{ inputs.image_name_runtime }}.tar
-          docker image ls -a
-
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -55,12 +41,12 @@ jobs:
           docker build \
             . \
             -f docker/cell-test.Dockerfile \
-            --build-arg BUILD_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_build }} \
-            --build-arg RUNTIME_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_runtime }} \
-            -t cell_test \
+            --build-arg BUILD_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_build }}:${{ inputs.image_version }} \
+            --build-arg RUNTIME_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_runtime }}:${{ inputs.image_version }} \
+            -t ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} \
             --cache-from type=gha \
             --cache-to type=gha,mode=min \
 
       - name: Run tests
         run: |
-          docker run -v ${{ inputs.tests_dir }}:/tests/ cell_test /bin/bash /tests/tests.sh
+          docker run -v ${{ inputs.tests_dir }}:/tests/ ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} /bin/bash /tests/tests.sh

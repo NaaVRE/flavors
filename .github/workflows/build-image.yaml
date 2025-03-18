@@ -52,6 +52,13 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Log in to the Container registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
       - id: find-dockerfile
         name: Find Dockerfile
         run: |
@@ -68,14 +75,7 @@ jobs:
           file: ${{ steps.find-dockerfile.outputs.dockerfile }}
           build-args: |
             CONDA_ENV_FILE=${{ inputs.flavor_dir }}/environment.yaml
-          tags: ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }},${{ inputs.image_repo }}/${{ inputs.image_name }}:latest
+          tags: ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }}
+          push: true
           cache-from: type=gha
           cache-to: type=gha,mode=min
-          outputs: type=docker,dest=/tmp/${{ inputs.image_name }}.tar
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ inputs.image_name }}
-          path: /tmp/${{ inputs.image_name }}.tar
-          retention-days: 1

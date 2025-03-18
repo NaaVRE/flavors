@@ -11,8 +11,12 @@ on:
         description: 'Docker image repo'
         type: string
         required: true
-      image_version:
-        description: 'Docker image version'
+      ci_image_version:
+        description: 'Docker image version for CI'
+        type: string
+        required: true
+      rel_image_version:
+        description: 'Docker image version for release'
         type: string
         required: true
       build_jupyter:
@@ -32,7 +36,7 @@ jobs:
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_repo: ${{ inputs.image_repo }}
-      image_version: ${{ inputs.image_version }}
+      image_version: ${{ inputs.ci_image_version }}
 
   build-cell-runtime:
     uses: ./.github/workflows/build-image.yaml
@@ -41,7 +45,7 @@ jobs:
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
       image_repo: ${{ inputs.image_repo }}
-      image_version: ${{ inputs.image_version }}
+      image_version: ${{ inputs.ci_image_version }}
 
   build-jupyter:
     uses: ./.github/workflows/build-image.yaml
@@ -50,7 +54,7 @@ jobs:
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
       image_repo: ${{ inputs.image_repo }}
-      image_version: ${{ inputs.image_version }}
+      image_version: ${{ inputs.ci_image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
     if: ${{ inputs.build_jupyter }}
 
@@ -60,7 +64,9 @@ jobs:
     with:
       image_name_build: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_name_runtime: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
+      image_name: naavre-fl-${{ inputs.flavor_name }}-cell-test
       image_repo: ${{ inputs.image_repo }}
+      image_version: ${{ inputs.ci_image_version }}
       tests_dir: './flavors/${{ inputs.flavor_name }}/tests/'
 
   push-cell-build:
@@ -69,6 +75,8 @@ jobs:
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_repo: ${{ inputs.image_repo }}
+      ci_image_version: ${{ inputs.ci_image_version }}
+      rel_image_version: ${{ inputs.rel_image_version }}
     if: ${{ github.event_name == 'release' }}
 
   push-cell-runtime:
@@ -77,6 +85,8 @@ jobs:
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
       image_repo: ${{ inputs.image_repo }}
+      ci_image_version: ${{ inputs.ci_image_version }}
+      rel_image_version: ${{ inputs.rel_image_version }}
     if: ${{ github.event_name == 'release' }}
 
   push-jupyter:
@@ -85,5 +95,7 @@ jobs:
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
       image_repo: ${{ inputs.image_repo }}
+      ci_image_version: ${{ inputs.ci_image_version }}
+      rel_image_version: ${{ inputs.rel_image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
     if: ${{ github.event_name == 'release' && inputs.build_jupyter }}
