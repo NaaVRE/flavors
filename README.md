@@ -25,28 +25,96 @@ structure:
 
 ## Build and Run Containers Locally
 
-### Jupyter Lab
+### Build
 
-Set the Dockerfile to the `naavre-jupyter.Dockerfile`:
+Use the helper script:
 
-```bash
-dockerfile=./docker/jupyter.Dockerfile
+```console
+$ ./build-local.sh -h
+Usage: ./build-local.sh [-n] [-t target] flavor
+
+-h,--help           print help and exit
+-n,--dry-run        print the commands that would be executed and exit
+-t,--target target  build target (options: jupyter, cell-build, cell-runtime,
+                    cell-test, cell-all, all; default: all)
+flavor              flavor name
 ```
 
-Set the conda environment file to the flavor's `environment.yaml`. For example for building the vanilla flavor:
+Example: all images for the vanilla flavor:
 
-```bash
-CONDA_ENV_FILE=./flavors/vanilla/environment.yaml
+```console
+$ ./build-local.sh vanilla -t all
+Building images...
+docker build . -f ./docker/jupyter.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-jupyter:local
+[+] Building 0.3s (11/11) FINISHED                                                             docker:default
+ => ...
+docker build . -f ./docker/cell-build.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-build:local
+[+] Building 0.3s (9/9) FINISHED                                                               docker:default
+ => ...
+docker build . -f ./docker/cell-runtime.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-runtime:local
+[+] Building 0.7s (5/5) FINISHED                                                               docker:default
+ => ...
+docker build . -f ./docker/cell-test.Dockerfile --build-arg BUILD_IMAGE=naavre-fl-vanilla-cell-build:local --build-arg RUNTIME_IMAGE=naavre-fl-vanilla-cell-runtime:local -t naavre-fl-vanilla-cell-test:local
+[+] Building 0.3s (11/11) FINISHED                                                             docker:default
+ => ...
+
+Built images:
+naavre-fl-vanilla-jupyter:local
+naavre-fl-vanilla-cell-build:local
+naavre-fl-vanilla-cell-runtime:local
+naavre-fl-vanilla-cell-test:local
 ```
 
-Run the build command:
+Example: jupyter image for the vanilla flavor:
 
-```bash
-docker build -t naavre-fl-vanilla-jupyter -f $dockerfile --build-arg CONDA_ENV_FILE=$CONDA_ENV_FILE .
+```console
+$ ./build-local.sh vanilla -t jupyter
+Building images...
+docker build . -f ./docker/jupyter.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-jupyter:local
+[+] Building 0.3s (11/11) FINISHED                                                             docker:default
+ => ...
+
+Built images:
+naavre-fl-vanilla-jupyter:local
 ```
 
-To run the container:
+Example: all cell images for the vanilla flavor:
 
-```bash
-docker run -it -p 8888:8888 --env-file ~/Downloads/notbooks/docker_VARS naavre-fl-vanilla-jupyter /bin/bash -c "source /venv/bin/activate && /tmp/init_script.sh && jupyter lab --debug --watch --NotebookApp.token='' --NotebookApp.ip='0.0.0.0' --NotebookApp.allow_origin='*' --collaborative"
+```console
+o ./build-local.sh vanilla -t cell-all
+Building images...
+docker build . -f ./docker/cell-build.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-build:local
+[+] Building 0.3s (9/9) FINISHED                                                               docker:default
+ => ...
+docker build . -f ./docker/cell-runtime.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-runtime:local
+[+] Building 1.0s (5/5) FINISHED                                                               docker:default
+ => ...
+docker build . -f ./docker/cell-test.Dockerfile --build-arg BUILD_IMAGE=naavre-fl-vanilla-cell-build:local --build-arg RUNTIME_IMAGE=naavre-fl-vanilla-cell-runtime:local -t naavre-fl-vanilla-cell-test:local
+[+] Building 0.3s (11/11) FINISHED                                                             docker:default
+ => ...
+
+Built images:
+naavre-fl-vanilla-cell-build:local
+naavre-fl-vanilla-cell-runtime:local
+naavre-fl-vanilla-cell-test:local
+```
+
+_Note: the `cell-test` target requires `cell-build` and `cell-runtime`. While the helper script allows to build only `cell-test`, it will fail if its dependencies haven’t previously been built. Use `cell-all` to build all three targets._
+
+### Run
+
+#### Jupyter Lab
+
+Example for the vanilla flavor:
+
+```shell
+docker run -it -p 8888:8888 naavre-fl-vanilla-jupyter:dev
+```
+
+#### Cell tests
+
+Example for the vanilla flavor:
+
+```shell
+docker run -v ./flavors/vanilla/tests/:/tests/ naavre-fl-vanilla-cell-test:dev /bin/bash /tests/tests.sh
 ```
