@@ -4,6 +4,6 @@ RUN micromamba install -y -n base -c conda-forge conda-pack && \
     micromamba clean --all --yes
 
 ARG CONDA_ENV_FILE
-COPY ${CONDA_ENV_FILE?} environment.yaml
+COPY --chown=mambauser:mambauser ${CONDA_ENV_FILE?} environment.yaml
 RUN micromamba create -y -n venv -f environment.yaml && \
     micromamba clean --all --yes
