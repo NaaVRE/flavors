@@ -60,7 +60,7 @@ jobs:
       - name: Generate base_image_tags.json
         run: |
           find ./flavors -mindepth 2 -maxdepth 2 -name 'flavor_config.yaml' | \
-            xargs yq ea -o=j '[.] | map({"key": .flavor_name, "value": {"build": "ghcr.io/naavre/flavors/naavre-fl-" + .flavor_name + "cell-build:${{ github.ref_name }}", "runtime": "ghcr.io/naavre/flavors/naavre-fl-" + .flavor_name + "cell-runtime:${{ github.ref_name }}"}}) | from_entries' \
+            xargs yq ea -o=j '[.] | map({"key": .flavor_name, "value": {"build": "ghcr.io/naavre/flavors/naavre-fl-" + .flavor_name + "-cell-build:${{ github.ref_name }}", "runtime": "ghcr.io/naavre/flavors/naavre-fl-" + .flavor_name + "-cell-runtime:${{ github.ref_name }}"}}) | from_entries' \
             | tee /tmp/base_image_tags.json
 
       - name: Add base_image_tags.json to release
