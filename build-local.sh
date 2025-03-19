@@ -32,7 +32,7 @@ get_image_name() {
 get_docker_build_cmd() {
   flavor="$1"
   image_base_name="$2"
-  flavor_dir="./flavors/$flavor/"
+  flavor_dir="./flavors/$flavor"
   dockerfile=$(get_dockerfile "$flavor_dir" "$image_base_name.Dockerfile")
   conda_env_file=$(get_conda_env_file "$flavor_dir")
   image_name=$(get_image_name "$flavor" "$image_base_name")
@@ -91,7 +91,7 @@ main() {
     exit 1
   fi
 
-  flavor_dir="./flavors/$flavor/"
+  flavor_dir="./flavors/$flavor"
   if [[ ! -d "$flavor_dir" ]]; then
     echo "Unknown flavor: $flavor"
     exit 1

@@ -45,13 +45,13 @@ Example: all images for the vanilla flavor:
 ```console
 $ ./build-local.sh vanilla -t all
 Building images...
-docker build . -f ./docker/jupyter.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-jupyter:local
+docker build . -f ./docker/jupyter.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla/environment.yaml -t naavre-fl-vanilla-jupyter:local
 [+] Building 0.3s (11/11) FINISHED                                                             docker:default
  => ...
-docker build . -f ./docker/cell-build.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-build:local
+docker build . -f ./docker/cell-build.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla/environment.yaml -t naavre-fl-vanilla-cell-build:local
 [+] Building 0.3s (9/9) FINISHED                                                               docker:default
  => ...
-docker build . -f ./docker/cell-runtime.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-runtime:local
+docker build . -f ./docker/cell-runtime.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla/environment.yaml -t naavre-fl-vanilla-cell-runtime:local
 [+] Building 0.7s (5/5) FINISHED                                                               docker:default
  => ...
 docker build . -f ./docker/cell-test.Dockerfile --build-arg BUILD_IMAGE=naavre-fl-vanilla-cell-build:local --build-arg RUNTIME_IMAGE=naavre-fl-vanilla-cell-runtime:local -t naavre-fl-vanilla-cell-test:local
@@ -70,7 +70,7 @@ Example: jupyter image for the vanilla flavor:
 ```console
 $ ./build-local.sh vanilla -t jupyter
 Building images...
-docker build . -f ./docker/jupyter.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-jupyter:local
+docker build . -f ./docker/jupyter.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla/environment.yaml -t naavre-fl-vanilla-jupyter:local
 [+] Building 0.3s (11/11) FINISHED                                                             docker:default
  => ...
 
@@ -81,12 +81,12 @@ naavre-fl-vanilla-jupyter:local
 Example: all cell images for the vanilla flavor:
 
 ```console
-o ./build-local.sh vanilla -t cell-all
+$ ./build-local.sh vanilla -t cell-all
 Building images...
-docker build . -f ./docker/cell-build.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-build:local
+docker build . -f ./docker/cell-build.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla/environment.yaml -t naavre-fl-vanilla-cell-build:local
 [+] Building 0.3s (9/9) FINISHED                                                               docker:default
  => ...
-docker build . -f ./docker/cell-runtime.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla//environment.yaml -t naavre-fl-vanilla-cell-runtime:local
+docker build . -f ./docker/cell-runtime.Dockerfile --build-arg CONDA_ENV_FILE=./flavors/vanilla/environment.yaml -t naavre-fl-vanilla-cell-runtime:local
 [+] Building 1.0s (5/5) FINISHED                                                               docker:default
  => ...
 docker build . -f ./docker/cell-test.Dockerfile --build-arg BUILD_IMAGE=naavre-fl-vanilla-cell-build:local --build-arg RUNTIME_IMAGE=naavre-fl-vanilla-cell-runtime:local -t naavre-fl-vanilla-cell-test:local
@@ -108,7 +108,7 @@ _Note: the `cell-test` target requires `cell-build` and `cell-runtime`. While th
 Example for the vanilla flavor:
 
 ```shell
-docker run -it -p 8888:8888 naavre-fl-vanilla-jupyter:dev
+docker run -it -p 8888:8888 naavre-fl-vanilla-jupyter:local
 ```
 
 #### Cell tests
@@ -116,5 +116,5 @@ docker run -it -p 8888:8888 naavre-fl-vanilla-jupyter:dev
 Example for the vanilla flavor:
 
 ```shell
-docker run -v ./flavors/vanilla/tests/:/tests/ naavre-fl-vanilla-cell-test:dev /bin/bash /tests/tests.sh
+docker run -v ./flavors/vanilla/tests/:/tests/ naavre-fl-vanilla-cell-test:local /bin/bash /tests/tests.sh
 ```
