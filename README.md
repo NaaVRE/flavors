@@ -124,4 +124,4 @@ Successful tests should output `0`.
 
 > [!TIP]
 > NaaVRE images are large and can quickly fill up your machine's storage.
-> If needed, free-up space with `docker image prune [-a]` ((documentation)[https://docs.docker.com/reference/cli/docker/image/prune/]).
+> If needed, free-up space with `docker image prune [-a]` ([documentation](https://docs.docker.com/reference/cli/docker/image/prune/)).
