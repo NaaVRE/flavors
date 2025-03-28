@@ -65,8 +65,8 @@ jobs:
                 [$flavor.flavor_name] + ($flavor.aliases // []) | map({
                   "key": .,
                   "value": {
-                    "build": "ghcr.io/naavre/flavors/naavre-fl-\($flavor.flavor_name)-cell-build:ref_name",
-                    "runtime": "ghcr.io/naavre/flavors/naavre-fl-\($flavor.flavor_name)-cell-runtime:ref_name"
+                    "build": "ghcr.io/naavre/flavors/naavre-fl-\($flavor.flavor_name)-cell-build:${{ github.ref_name }}",
+                    "runtime": "ghcr.io/naavre/flavors/naavre-fl-\($flavor.flavor_name)-cell-runtime:${{ github.ref_name }}"
                   }
                 })
               )] | .[] as $item ireduce([]; . + $item) | from_entries
