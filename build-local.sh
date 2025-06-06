@@ -8,6 +8,7 @@ __usage="Usage: ./build-local.sh [-n] [-t target] flavor
 -n,--dry-run        print the commands that would be executed and exit
 -t,--target target  build target (options: jupyter, cell-build, cell-runtime,
                     cell-test, cell-all, all; default: all)
+-r,--run-tests      run the tests (requires --target all or --target cell-all)
 flavor              flavor name"
 
 get_dockerfile() {
@@ -53,6 +54,7 @@ get_docker_build_cell_test_cmd() {
 main() {
   dry_run=0
   target="all"
+  run_tests=0
   flavor=""
 
   POSITIONAL_ARGS=()
@@ -69,6 +71,10 @@ main() {
       -t|--target)
         target="$2"
         shift
+        shift
+        ;;
+      -r|--run-tests)
+        run_tests=1
         shift
         ;;
       -*|--*)
@@ -135,6 +141,26 @@ main() {
   for image_name in "${image_names[@]}"; do
     echo "$image_name"
   done
+
+  if [[ $run_tests -eq 1 ]]; then
+    if [[ ! "$target" =~ ^(all|cell-all)$ ]]; then
+      echo -e "\nCannot run tests if --target is not 'all' or 'cell-all'"
+      exit 1
+    else
+      echo -e "\nRunning tests..."
+      test_cmd="docker run -v ./flavors/$flavor/tests/:/tests/ $(get_image_name "$flavor" "cell-test") /bin/bash /tests/tests.sh"
+      echo "$test_cmd"
+      if [[ $dry_run -eq NO ]]; then
+        $test_cmd
+        if [[ $? -eq 0 ]]; then
+          echo -e "\nTests PASSED"
+        else
+          echo -e "\nTests FAILED"
+        fi
+      fi
+    fi
+  fi
+
 
 }
 

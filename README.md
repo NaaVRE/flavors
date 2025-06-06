@@ -113,7 +113,13 @@ docker run -it -p 8888:8888 naavre-fl-vanilla-jupyter:local
 
 #### Cell tests
 
-Example for the vanilla flavor:
+Tests can be run with the helper script:
+
+```shell
+./build-local.sh vanilla -t cell-all --run-tests
+```
+
+Alternatively, you can run the tests with the following command:
 
 ```shell
 docker run -v ./flavors/vanilla/tests/:/tests/ naavre-fl-vanilla-cell-test:local /bin/bash /tests/tests.sh
