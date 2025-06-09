@@ -1,0 +1,47 @@
+name: biodt-hackathon25
+channels:
+  - conda-forge
+dependencies:
+  # naavre-fl-*-cell-build
+  - r-jsonlite=1.9.1
+  - r-optparse=1.7.5
+  # naavre-fl-*-jupyter
+  - ipykernel>=6.29.5
+  - r-irkernel=1.3.2
+  # user packages for all flavors
+  - git>=2.39.1
+  - minio>=7.2.15
+  - pip>=25.0.1
+  - python>=3.8
+  # - r=4.4
+  # user packages for this flavor
+  - jupyter
+  - jupyterlab
+  - nbclassic
+  - python=3.12
+#  - ipykernel
+  - scipy
+  - nglview
+  - r-base=4.3.3
+#  - r-irkernel
+  - rioxarray
+  - matplotlib
+  - pandas
+  - matplotlib-scalebar
+  - numpy
+  - ipywidgets
+  - ipympl
+  - r-terra
+  - r-raster
+  - git
+  - minio-client
+  - minio
+  - s3fs
+#  - soilgrids
+  - pyproj
+  - rdata
+  - rasterio
+  - requests
+  - pip:
+    - git+https://github.com/QCDIS/general-soilgrids-soil-data.git
+#    - git+https://github.com/trossi/rdata.git@e50eb9c
