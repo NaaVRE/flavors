@@ -7,6 +7,10 @@ RUN pip install -r requirements.txt
 RUN conda install "nb_conda_kernels>=2.5.0"; \
     conda clean -a
 
+# Disable "Would you like to get notified about official Jupyter news?"
+# https://jupyterlab.readthedocs.io/en/stable/user/announcements.html
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
+
 ARG CONDA_ENV_FILE
 COPY --chown=jovyan:jovyan ${CONDA_ENV_FILE?} environment.yaml
 RUN conda env create -f environment.yaml && \
