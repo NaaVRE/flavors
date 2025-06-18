@@ -23,3 +23,4 @@ file_names.write(json.dumps(names))
 file_names.close()
 
 print('Please rebuild this flavor and not the other ones')
+print('Run the workflow despite the run from PR #78')
