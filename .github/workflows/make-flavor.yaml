@@ -29,8 +29,23 @@ on:
         required: true
 
 jobs:
+  configure-workflow:
+    name: Configure workflow
+    runs-on: ubuntu-latest
+    outputs:
+      should_skip: ${{ steps.skip_check.outputs.should_skip }}
+    steps:
+      - id: skip_check
+        name: Configure skip-duplicate-actions
+        uses: fkirc/skip-duplicate-actions@v5
+        with:
+          paths: '[".github/**", "docker/**", "flavors/${{ inputs.flavor_name }}/**"]'
+          do_not_skip: '["workflow_dispatch", "schedule", "release"]'
+
   build-cell-build:
     uses: ./.github/workflows/build-image.yaml
+    needs: [configure-workflow]
+    if: needs.configure-workflow.outputs.should_skip != 'true'
     with:
       dockerfile: cell-build.Dockerfile
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
@@ -40,6 +55,8 @@ jobs:
 
   build-cell-runtime:
     uses: ./.github/workflows/build-image.yaml
+    needs: [configure-workflow]
+    if: needs.configure-workflow.outputs.should_skip != 'true'
     with:
       dockerfile: cell-runtime.Dockerfile
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
@@ -49,6 +66,8 @@ jobs:
 
   build-jupyter:
     uses: ./.github/workflows/build-image.yaml
+    needs: [configure-workflow]
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && inputs.build_jupyter }}
     with:
       dockerfile: jupyter.Dockerfile
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
@@ -56,11 +75,11 @@ jobs:
       image_repo: ${{ inputs.image_repo }}
       image_version: ${{ inputs.ci_image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
-    if: ${{ inputs.build_jupyter }}
 
   test:
     uses: ./.github/workflows/test-naavre-cell.yaml
-    needs: [build-cell-build, build-cell-runtime]
+    needs: [configure-workflow, build-cell-build, build-cell-runtime]
+    if: needs.configure-workflow.outputs.should_skip != 'true'
     with:
       image_name_build: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_name_runtime: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
@@ -71,31 +90,31 @@ jobs:
 
   push-cell-build:
     uses: ./.github/workflows/push-image.yaml
-    needs: [build-cell-build, test]
+    needs: [configure-workflow, build-cell-build, test]
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_repo: ${{ inputs.image_repo }}
       ci_image_version: ${{ inputs.ci_image_version }}
       rel_image_version: ${{ inputs.rel_image_version }}
-    if: ${{ github.event_name == 'release' }}
 
   push-cell-runtime:
     uses: ./.github/workflows/push-image.yaml
-    needs: [build-cell-runtime, test]
+    needs: [configure-workflow, build-cell-runtime, test]
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
       image_repo: ${{ inputs.image_repo }}
       ci_image_version: ${{ inputs.ci_image_version }}
       rel_image_version: ${{ inputs.rel_image_version }}
-    if: ${{ github.event_name == 'release' }}
 
   push-jupyter:
     uses: ./.github/workflows/push-image.yaml
-    needs: [build-jupyter, test]
+    needs: [configure-workflow, build-jupyter, test]
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_jupyter }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
       image_repo: ${{ inputs.image_repo }}
       ci_image_version: ${{ inputs.ci_image_version }}
       rel_image_version: ${{ inputs.rel_image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
-    if: ${{ github.event_name == 'release' && inputs.build_jupyter }}
