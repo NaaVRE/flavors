@@ -1,0 +1,10 @@
+library(optparse)
+library(jsonlite)
+
+library(aws.s3)
+library(stringr)
+library(dplyr)
+library(reshape)
+library(vegan)
+library(fields)
+library(dendextend)
