@@ -21,3 +21,5 @@ filename = "/tmp/names_" + id + ".json"
 file_names = open(filename, "w")
 file_names.write(json.dumps(names))
 file_names.close()
+
+print('Please rebuild this flavor and not the other ones')
