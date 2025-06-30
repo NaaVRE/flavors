@@ -1,13 +1,16 @@
-FROM ubuntu:22.04 as build
+FROM ubuntu:24.04
 
 # OTB from the ZonalFilter dockerfile
 RUN apt-get update && \
-    apt-get install -y python3-pip python3.8-dev software-properties-common wget cmake libglu1-mesa-dev && \
-    add-apt-repository -y ppa:ubuntugis/ppa && \
-    apt-get update && \
-    apt-get install -y gdal-bin libgdal-dev && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    apt-get install -y \
+      python3-pip \
+      python3-dev \
+      software-properties-common \
+      wget \
+      cmake \
+      libglu1-mesa-dev \
+      gdal-bin \
+      libgdal-dev
 
 WORKDIR /usr/local/otb
 
