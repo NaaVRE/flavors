@@ -1,0 +1,6 @@
+install.packages("vol2birdR", repos="https://cran.r-project.org")
+library("vol2birdR")
+install.packages("bioRad", repos="https://cran.r-project.org")
+library("bioRad")
+devtools::install_github("aloftdata/getRad")
+library("getRad")
