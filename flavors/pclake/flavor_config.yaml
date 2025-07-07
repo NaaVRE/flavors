@@ -1,0 +1,4 @@
+flavor_name: pclake
+build_jupyter: True
+free_disk_space: True
+aliases: []
