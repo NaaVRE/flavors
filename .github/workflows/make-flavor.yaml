@@ -76,7 +76,17 @@ jobs:
       image_version: ${{ inputs.ci_image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
 
-  test:
+  test-jupyter:
+    uses: ./.github/workflows/test-jupyter.yaml
+    needs: [configure-workflow, build-jupyter]
+    if: needs.configure-workflow.outputs.should_skip != 'true'
+    with:
+      image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
+      image_repo: ${{ inputs.image_repo }}
+      image_version: ${{ inputs.ci_image_version }}
+      tests_dir: './flavors/${{ inputs.flavor_name }}/tests/'
+
+  test-naavre-cell:
     uses: ./.github/workflows/test-naavre-cell.yaml
     needs: [configure-workflow, build-cell-build, build-cell-runtime]
     if: needs.configure-workflow.outputs.should_skip != 'true'
@@ -90,7 +100,7 @@ jobs:
 
   push-cell-build:
     uses: ./.github/workflows/push-image.yaml
-    needs: [configure-workflow, build-cell-build, test]
+    needs: [configure-workflow, build-cell-build, test-jupyter, test-naavre-cell]
     if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
@@ -100,7 +110,7 @@ jobs:
 
   push-cell-runtime:
     uses: ./.github/workflows/push-image.yaml
-    needs: [configure-workflow, build-cell-runtime, test]
+    needs: [configure-workflow, build-cell-runtime, test-jupyter, test-naavre-cell]
     if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
@@ -110,7 +120,7 @@ jobs:
 
   push-jupyter:
     uses: ./.github/workflows/push-image.yaml
-    needs: [configure-workflow, build-jupyter, test]
+    needs: [configure-workflow, build-jupyter, test-jupyter, test-naavre-cell]
     if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_jupyter }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter

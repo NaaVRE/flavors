@@ -1,0 +1,33 @@
+name: Test cell base image
+
+on:
+  workflow_call:
+    inputs:
+      image_name:
+        description: 'Docker image name'
+        type: string
+        required: true
+      image_repo:
+        description: 'Docker image repo'
+        type: string
+        required: true
+      image_version:
+        description: 'Docker image version'
+        type: string
+        required: true
+      tests_dir:
+        description: 'Directory containing test files'
+        type: string
+        required: true
+
+jobs:
+  test:
+    name: Test ${{ inputs.image_name }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          docker run -v ${{ inputs.tests_dir }}:/tests/ ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} /bin/bash /tests/tests.sh
