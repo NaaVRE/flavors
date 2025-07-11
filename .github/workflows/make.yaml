@@ -46,6 +46,7 @@ jobs:
       build_jupyter: ${{ matrix.build_jupyter }}
       free_disk_space: ${{ matrix.free_disk_space }}
     strategy:
+      fail-fast: false
       matrix: ${{ fromJson(needs.configure-workflow.outputs.matrix) }}
 
   save-base-image-tags:

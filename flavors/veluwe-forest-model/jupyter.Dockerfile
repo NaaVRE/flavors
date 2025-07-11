@@ -551,7 +551,7 @@ ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 USER root
 
 RUN apt-get update && \
-    apt-get install -y libjpeg62 libpng16-16 && \
+    apt-get install -y libjpeg62 libpng16-16 gdal-bin && \
     apt autoclean -y && \
     apt autoremove -y
 
