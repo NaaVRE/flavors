@@ -528,8 +528,9 @@ COPY --from=landis-ii /bin/LANDIS_Linux /bin/LANDIS_Linux
 COPY --from=landis-ii /bin/.dotnet /bin/.dotnet
 ENV PATH=${PATH}:/bin/.dotnet
 ENV LANDIS_CONSOLE="/bin/LANDIS_Linux/Core-Model-v8-LINUX/build/Release/Landis.Console.dll"
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 RUN apt-get update && \
-    apt-get install -y libjpeg62  libpng16-16 && \
+    apt-get install -y libjpeg62 libpng16-16 gdal-bin && \
     apt autoclean -y && \
     apt autoremove -y \
