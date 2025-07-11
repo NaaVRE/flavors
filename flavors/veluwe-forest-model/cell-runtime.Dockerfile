@@ -1,6 +1,4 @@
-ARG NAAVRE_VERSION
-
-FROM ubuntu:22.04 AS landis-ii
+FROM ubuntu:24.04 AS landis-ii
 
 ################################################################
 # PREPARATIONS
@@ -524,24 +522,14 @@ RUN cd /bin/LANDIS_Linux/Core-Model-v8-LINUX/Tool-Console/src && dotnet build -c
 # # Re-configure git for latest version of HTTP protocol
 RUN git config --global --unset http.version
 
-FROM mambaorg/micromamba:1.5.6
-RUN micromamba install -y -n base -c conda-forge conda-pack
-ARG CONDA_ENV_FILE
-COPY ${CONDA_ENV_FILE} environment.yaml
-RUN micromamba create -y -n venv -f environment.yaml && \
-    micromamba clean --all --yes
+FROM ubuntu:24.04
 
 COPY --from=landis-ii /bin/LANDIS_Linux /bin/LANDIS_Linux
 COPY --from=landis-ii /bin/.dotnet /bin/.dotnet
 ENV PATH=${PATH}:/bin/.dotnet
 ENV LANDIS_CONSOLE="/bin/LANDIS_Linux/Core-Model-v8-LINUX/build/Release/Landis.Console.dll"
 
-USER root
-
 RUN apt-get update && \
     apt-get install -y libjpeg62  libpng16-16 && \
     apt autoclean -y && \
-    apt autoremove -y
-
-USER $NB_USER
-WORKDIR /home/$NB_USER
+    apt autoremove -y \
