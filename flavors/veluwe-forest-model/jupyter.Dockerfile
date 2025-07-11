@@ -1,6 +1,4 @@
-ARG NAAVRE_VERSION
-
-FROM ubuntu:22.04 AS landis-ii
+FROM ubuntu:24.04 AS landis-ii
 
 ################################################################
 # PREPARATIONS
@@ -524,22 +522,36 @@ RUN cd /bin/LANDIS_Linux/Core-Model-v8-LINUX/Tool-Console/src && dotnet build -c
 # # Re-configure git for latest version of HTTP protocol
 RUN git config --global --unset http.version
 
-FROM mambaorg/micromamba:1.5.6
-RUN micromamba install -y -n base -c conda-forge conda-pack
+FROM quay.io/jupyter/minimal-notebook:lab-4.3.6
+
+COPY --chown=jovyan:jovyan ./docker/jupyter.requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# nb_conda_kernels for auto-discovery of kernels in other conda environments
+RUN conda install "nb_conda_kernels>=2.5.0"; \
+    conda clean -a
+
+# Disable "Would you like to get notified about official Jupyter news?"
+# https://jupyterlab.readthedocs.io/en/stable/user/announcements.html
+RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
+
 ARG CONDA_ENV_FILE
-COPY ${CONDA_ENV_FILE} environment.yaml
-RUN micromamba create -y -n venv -f environment.yaml && \
-    micromamba clean --all --yes
+COPY --chown=jovyan:jovyan ${CONDA_ENV_FILE?} environment.yaml
+RUN conda env create -f environment.yaml && \
+    conda clean -a
+RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
+
 
 COPY --from=landis-ii /bin/LANDIS_Linux /bin/LANDIS_Linux
 COPY --from=landis-ii /bin/.dotnet /bin/.dotnet
 ENV PATH=${PATH}:/bin/.dotnet
 ENV LANDIS_CONSOLE="/bin/LANDIS_Linux/Core-Model-v8-LINUX/build/Release/Landis.Console.dll"
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 
 USER root
 
 RUN apt-get update && \
-    apt-get install -y libjpeg62  libpng16-16 && \
+    apt-get install -y libjpeg62 libpng16-16 && \
     apt autoclean -y && \
     apt autoremove -y
 
