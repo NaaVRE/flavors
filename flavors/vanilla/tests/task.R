@@ -1,4 +1,4 @@
-setwd('/app')
+# setwd('/app')
 
 # retrieve input parameters
 
