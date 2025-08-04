@@ -24,6 +24,7 @@ dependencies:
   - r-rcpp
   - r-rcppeigen
   - r-ggplot2
+  - r-terra
   - git
   - python>=3.9
   - pip
