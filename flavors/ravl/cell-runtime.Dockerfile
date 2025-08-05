@@ -18,6 +18,7 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
 
 # Put conda in path so we can use conda activate
 ENV PATH=$CONDA_DIR/bin:$PATH
+ENV CONDA_PLUGINS_AUTO_ACCEPT_TOS=true
 RUN conda install -c conda-forge mamba conda-merge conda-pack
 
 RUN ls /opt/radar/vol2bird/bin
