@@ -14,7 +14,7 @@ dependencies:
   - minio>=7.2.15
   - pip>=25.0.1
   # - python>=3.8 # version overridden below
-  - r>=4.4
+  - r #>=4.4
   # user packages for this flavor
   - webdavclient3
   # Wadden
@@ -25,6 +25,7 @@ dependencies:
   - r-ncdf4
   - r-tidyverse
   - r-devtools
+  - make
   # Acolite
   # (Acolite doesn't run on Python 3.12 yet)
   - python<=3.11
@@ -42,3 +43,24 @@ dependencies:
   - matplotlib
   - scikit-image
   - pyproj
+  # Dependencies for tools4watlas
+  - r-litedown
+  - r-jpeg
+  - r-png
+  - r-markdown
+  - r-gridExtra
+  - r-terra
+  - r-plogr
+  - r-gridtext
+  - r-abind
+  - r-rosm
+  - r-zoo
+  - r-viridis
+  - r::r-tidyterra
+  - r-RSQLite
+  - r-RMySQL
+  - r-patchwork
+  - r-ggtext
+  - r-ggspatial
+  - r-ggrepel
+  - r-ggnewscale

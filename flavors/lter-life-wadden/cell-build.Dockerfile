@@ -13,3 +13,6 @@ RUN /opt/conda/envs/venv/bin/git clone --depth 1 --branch 20250114.0 https://git
     cp ./acolite/acolite -r "$site_package_dir" && \
     cp ./acolite/config -r "$site_package_dir" && \
     cp ./acolite/data -r "$site_package_dir"
+
+COPY ./flavors/lter-life-wadden/install_packages.R .
+RUN micromamba run -n venv bash -c "Rscript install_packages.R"
