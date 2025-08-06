@@ -14,6 +14,10 @@ dependencies:
   # - pip>=25.0.1
   # - python>=3.8
   - r>=4.4
+  - r-secretsprovider=1.0.0=r43hc72bb7e_0
+  - r-getpass
+  # - pip:
+  #   - SecretsProvider
   # user packages for this flavor
   - r-aws.s3
   - r-desolve
