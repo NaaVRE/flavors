@@ -68,3 +68,10 @@ dependencies:
   - r-ggspatial
   - r-ggrepel
   - r-ggnewscale
+  # Dependencies for mapmate
+  - r-sp
+  - r-maps
+  - r-geosphere
+  - r-lazyeval
+  - r-rcpproll
+  - r-mapproj
