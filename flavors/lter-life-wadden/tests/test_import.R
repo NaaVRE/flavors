@@ -47,3 +47,20 @@ get('SIBES_dataset')
 # Test TempSED
 require(TempSED)
 example("TempSED_run1D")
+
+# Test mapmate
+library(mapmate)
+library(dplyr)
+data(annualtemps)
+
+library(RColorBrewer)
+pal <- rev(brewer.pal(11, "RdYlBu"))
+
+temps <- mutate(annualtemps, frameID = Year - min(Year) + 1)
+frame1 <- filter(temps, frameID == 1)  # subset to first frame
+id <- "frameID"
+
+save_map(frame1, z.name = "z", id = id, ortho = FALSE, col = pal, type = "maptiles",
+    save.plot = FALSE, return.plot = TRUE)
+save_map(frame1, z.name = "z", id = id, col = pal, type = "maptiles", save.plot = FALSE,
+    return.plot = TRUE)
