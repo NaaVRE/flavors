@@ -14,6 +14,10 @@ dependencies:
   - pip>=25.0.1
   - python>=3.8
   - r>=4.4
+  - r-secretsprovider
+  - r-getpass
+  - pip:
+    - SecretsProvider
   # user packages for this flavor
   # - r-irkernel
   # - r-jsonlite
