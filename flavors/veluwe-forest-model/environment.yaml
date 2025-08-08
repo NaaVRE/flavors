@@ -29,6 +29,7 @@ dependencies:
   - r-rcppeigen
   - r-ggplot2
   - r-terra
+  - r-processx
   - git
   - python>=3.9
   - pip
