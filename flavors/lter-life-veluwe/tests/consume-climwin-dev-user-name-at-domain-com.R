@@ -1,4 +1,4 @@
-install.packages("zoo",repos = "http://cran.us.r-project.org")
+install.packages("zoo",repos = "http://cran.r-project.org")
 
 library(optparse)
 library(jsonlite)
