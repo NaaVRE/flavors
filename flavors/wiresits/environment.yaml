@@ -343,6 +343,8 @@ dependencies:
   - r-xfun=0.52=r43h93ab643_0
   - r-xml2=1.3.8=r43h1bb2df6_0
   - r-yaml=2.3.10=r43hdb488b9_0
+  - r-codetools
+  - r-ptw
   - rav1e=0.7.1=h8fae777_3
   - readline=8.2=h8c095d6_2
   - referencing=0.36.2=pyh29332c3_0
