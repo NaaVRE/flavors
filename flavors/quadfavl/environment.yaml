@@ -83,3 +83,4 @@ dependencies:
   - r-devtools
   - r::r-suntools
   - r::r-lutz
+  - r-keyring
