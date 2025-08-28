@@ -84,3 +84,7 @@ dependencies:
   - r::r-suntools
   - r::r-lutz
   - r-keyring
+  - r-glue
+  - r-httr
+  - r-xml2
+  - r-aws.s3
