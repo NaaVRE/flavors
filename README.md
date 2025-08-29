@@ -110,6 +110,13 @@ Example for the vanilla flavor:
 ```shell
 docker run -it -p 8888:8888 naavre-fl-vanilla-jupyter:local
 ```
+#### Terminal
+
+Example for the vanilla flavor:
+
+```shell
+docker run --rm -it naavre-fl-vanilla-jupyter:local /bin/bash
+```
 
 #### Cell tests
 
