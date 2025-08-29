@@ -19,6 +19,9 @@ dependencies:
   - pip:
     - SecretsProvider
   # user packages for this flavor
+  - rasterio
+  - pandas
+  - matplotlib
   - r-renv
   - r-jsonlite
   - r-lobstr
