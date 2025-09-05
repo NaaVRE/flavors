@@ -1,0 +1,6 @@
+flavor_name: vanilla
+build_jupyter: True
+free_disk_space: False
+aliases:
+  - python
+  - r
