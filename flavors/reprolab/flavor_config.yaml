@@ -1,7 +1,5 @@
-flavor_name: vanilla
+flavor_name: reprolab
 build_jupyter: True
 build_cell_base: False
 free_disk_space: False
-aliases:
-  - python
-  - r
+aliases: []

@@ -1,4 +1,4 @@
-name: vanilla
+name: reprolab
 channels:
   - conda-forge
 dependencies:
