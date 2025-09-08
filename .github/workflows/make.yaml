@@ -44,6 +44,7 @@ jobs:
       ci_image_version: ci-${{ github.sha }}
       rel_image_version: ${{ github.ref_name }}
       build_jupyter: ${{ matrix.build_jupyter }}
+      build_cell_base: ${{ matrix.build_cell_base }}
       free_disk_space: ${{ matrix.free_disk_space }}
     strategy:
       fail-fast: false
