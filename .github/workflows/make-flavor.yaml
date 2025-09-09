@@ -23,6 +23,10 @@ on:
         description: 'Whether to build the NaaVRE Jupyter images'
         type: boolean
         required: true
+      build_cell_base:
+        description: 'Whether to build the NaaVRE cell base images'
+        type: boolean
+        required: true
       free_disk_space:
         description: 'Free disk space on the action runner before running jobs'
         type: boolean
@@ -45,7 +49,7 @@ jobs:
   build-cell-build:
     uses: ./.github/workflows/build-image.yaml
     needs: [configure-workflow]
-    if: needs.configure-workflow.outputs.should_skip != 'true'
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && inputs.build_cell_base }}
     with:
       dockerfile: cell-build.Dockerfile
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
@@ -56,7 +60,7 @@ jobs:
   build-cell-runtime:
     uses: ./.github/workflows/build-image.yaml
     needs: [configure-workflow]
-    if: needs.configure-workflow.outputs.should_skip != 'true'
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && inputs.build_cell_base }}
     with:
       dockerfile: cell-runtime.Dockerfile
       flavor_dir: './flavors/${{ inputs.flavor_name }}'
@@ -101,7 +105,7 @@ jobs:
   push-cell-build:
     uses: ./.github/workflows/push-image.yaml
     needs: [configure-workflow, build-cell-build, test-jupyter, test-naavre-cell]
-    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' }}
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_cell_base }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_repo: ${{ inputs.image_repo }}
@@ -111,7 +115,7 @@ jobs:
   push-cell-runtime:
     uses: ./.github/workflows/push-image.yaml
     needs: [configure-workflow, build-cell-runtime, test-jupyter, test-naavre-cell]
-    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' }}
+    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_cell_base }}
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
       image_repo: ${{ inputs.image_repo }}
