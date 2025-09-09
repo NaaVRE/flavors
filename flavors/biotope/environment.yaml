@@ -16,6 +16,7 @@ dependencies:
   - r>=4.4
   - r-secretsprovider
   - r-getpass
+  - r-purrr
   - pip:
     - SecretsProvider
   # user packages for this flavor

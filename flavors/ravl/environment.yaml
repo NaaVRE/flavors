@@ -17,6 +17,7 @@ dependencies:
   - r>=4.3
   - r-secretsprovider
   - r-getpass
+  - r-purrr
   - pip:
     - SecretsProvider
   # user packages for this flavor
@@ -64,7 +65,6 @@ dependencies:
   - r-vroom
   - r-tzdb
   - r-stringi
-  - r-purrr
   - r-curl
   - r-dplyr
   - r-fields

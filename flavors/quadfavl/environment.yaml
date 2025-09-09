@@ -14,6 +14,7 @@ dependencies:
   - r>=4.3
   - r-secretsprovider
   - r-getpass
+  - r-purrr
   # user packages for this flavor
   # (intentionally empty in vanilla)
   - hdf5
@@ -64,7 +65,6 @@ dependencies:
   - r-units
   - r-lattice
   - r-stringi
-  - r-purrr
   - r-gridExtra
   - r-curl
   - r-dplyr
