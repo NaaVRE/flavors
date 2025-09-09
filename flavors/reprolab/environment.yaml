@@ -18,4 +18,5 @@ dependencies:
   - r-getpass
   - pip:
     - SecretsProvider
+    - git+https://github.com/QCDIS/jupyter-reprolab.git
   # user packages for this flavor
