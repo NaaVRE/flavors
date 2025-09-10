@@ -11,8 +11,9 @@ dependencies:
   - git=2.49.0
   - minio=7.2.15
   - python>=3.8
-  - r-secretsprovider=1.0.0=r43hc72bb7e_0
+  - r-secretsprovider
   - r-getpass
+  - r-purrr
   - pip:
     - SecretsProvider
   # user packages for this flavor
@@ -297,7 +298,6 @@ dependencies:
   - r-proj=0.5.0=r43h23c2263_2
   - r-proxy=0.4_27=r43hb1dbf0f_3
   - r-ps=1.9.1=r43h2b5f3a1_0
-  - r-purrr=1.1.0=r43h54b55ab_0
   - r-r6=2.6.1=r43hc72bb7e_0
   - r-ragg=1.4.0=r43hdcc764c_0
   - r-rappdirs=0.3.3=r43hb1dbf0f_3

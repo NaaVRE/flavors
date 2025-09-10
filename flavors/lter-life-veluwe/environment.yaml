@@ -16,10 +16,10 @@ dependencies:
   - r # >=4.4
   - r-secretsprovider
   - r-getpass
+  - r-purrr
   - pip:
     - SecretsProvider
   # user packages for this flavor
-  - r-purrr
   - r-nloptr
   - r-colorspace
   - r-farver
