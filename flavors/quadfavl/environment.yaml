@@ -14,6 +14,7 @@ dependencies:
   - r>=4.3
   - r-secretsprovider
   - r-getpass
+  - r-aws.s3
   # user packages for this flavor
   # (intentionally empty in vanilla)
   - hdf5
@@ -87,4 +88,3 @@ dependencies:
   - r-glue
   - r-httr
   - r-xml2
-  - r-aws.s3

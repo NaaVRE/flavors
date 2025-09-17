@@ -16,13 +16,13 @@ dependencies:
   - r>=4.4
   - r-secretsprovider
   - r-getpass
+  - r-aws.s3
   - pip:
     - SecretsProvider
   # user packages for this flavor
   # - r-irkernel
   # - r-jsonlite
   # - r-optparse
-  - r-aws.s3
   - r-stringr
   - r-dplyr
   - r-reshape

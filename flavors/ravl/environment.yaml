@@ -17,6 +17,7 @@ dependencies:
   - r>=4.3
   - r-secretsprovider
   - r-getpass
+  - r-aws.s3
   - pip:
     - SecretsProvider
   # user packages for this flavor
@@ -88,7 +89,6 @@ dependencies:
   - r-rcpp
   - r-rcppeigen
   - r-xml2
-  - r-aws.s3
   - r-plotly
   - r-rosm
   - r-ggspatial
