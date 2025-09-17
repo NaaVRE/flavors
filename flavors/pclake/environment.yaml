@@ -16,10 +16,10 @@ dependencies:
   - r>=4.4
   - r-secretsprovider
   - r-getpass
+  - r-aws.s3
   # - pip:
   #   - SecretsProvider
   # user packages for this flavor
-  - r-aws.s3
   - r-desolve
   - r-rjava
   - r-reshape2
