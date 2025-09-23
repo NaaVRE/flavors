@@ -10,6 +10,7 @@ dependencies:
   - python>=3.8
   - pip:
     - SecretsProvider
+    - howfairis
   - jupyter
   - jupyterlab
   - nbclassic
@@ -34,5 +35,4 @@ dependencies:
   - pylint
   - radon
   - bandit
-  - howfairis
   - gitleaks
