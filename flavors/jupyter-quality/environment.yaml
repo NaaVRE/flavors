@@ -1,0 +1,38 @@
+name: jupyter-quality
+channels:
+  - conda-forge
+  - memfault
+dependencies:
+  - ipykernel>=6.29.5
+  - git>=2.39.1
+  - minio>=7.2.15
+  - pip>=25.0.1
+  - python>=3.8
+  - pip:
+    - SecretsProvider
+#    - howfairis
+  - jupyter
+  - jupyterlab
+  - nbclassic
+  - python=3.12
+  - scipy
+  - nglview
+  - rioxarray
+  - matplotlib
+  - pandas
+  - matplotlib-scalebar
+  - numpy
+  - ipywidgets
+  - ipympl
+  - git
+  - minio-client
+  - minio
+  - s3fs
+  - pyproj
+  - rdata
+  - rasterio
+  - requests
+  - pylint
+  - radon
+  - bandit
+  - gitleaks
