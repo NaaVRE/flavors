@@ -1,0 +1,21 @@
+name: mercury
+channels:
+  - conda-forge
+dependencies:
+  - ipykernel
+  - pip
+  - python
+  - jupyter
+  - jupyterlab
+  - nbclassic
+  - scipy
+  - nglview
+  - matplotlib
+  - matplotlib-scalebar
+  - ipywidgets
+  - ipympl
+  - git
+  - minio-client
+  - minio
+  - s3fs
+  - mercury
