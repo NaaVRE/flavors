@@ -1,7 +1,6 @@
 name: lter-life-wadden
 channels:
   - conda-forge
-  - defaults
 dependencies:
   # naavre-fl-*-cell-build
   - r-jsonlite>=1.9.1
