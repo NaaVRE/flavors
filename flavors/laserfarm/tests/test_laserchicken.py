@@ -14,14 +14,25 @@ from laserchicken import load
 # Download a sample point cloud from https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_25FN2.LAZ
 import requests
 
+def download_file_and_load(url, output_path):
+    response = requests.get(url, stream=True)
+    response.raise_for_status()
+    with open(output_path, "wb") as f:
+        for chunk in response.iter_content(chunk_size=8192):
+            f.write(chunk)
+    print(f"Downloaded to {output_path}")
+
+    point_cloud = load(output_path)
+
+
+
+url = "https://ns_hwh.fundaments.nl/hwh-ahn/ahn4/01_LAZ/C_26AN2.LAZ"
+output_path = "C_26AN2.LAZ"
+
+download_file_and_load(url, output_path)
+
 url = "https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_25FN2.LAZ"
 output_path = "2023_C_25FN2.LAZ"
 
-response = requests.get(url, stream=True)
-response.raise_for_status()
-with open(output_path, "wb") as f:
-    for chunk in response.iter_content(chunk_size=8192):
-        f.write(chunk)
-print(f"Downloaded to {output_path}")
 
-point_cloud = load(output_path)
+download_file_and_load(url, output_path)
