@@ -46,5 +46,5 @@ dependencies:
   - webdavclient3
   - wradlib
   - pip:
-      - git+https://github.com/QCDIS/Laserfarm.git
-      - git+https://github.com/QCDIS/laserchicken.git
+      - git+https://github.com/eEcoLiDAR/Laserfarm.git
+      - git+https://github.com/eEcoLiDAR/laserchicken.git
