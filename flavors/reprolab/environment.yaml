@@ -21,3 +21,4 @@ dependencies:
     - SecretsProvider
     - git+https://github.com/QCDIS/jupyter-reprolab.git
   # user packages for this flavor
+  - pyarrow
