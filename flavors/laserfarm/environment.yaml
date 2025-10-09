@@ -47,4 +47,4 @@ dependencies:
   - wradlib
   - pip:
       - git+https://github.com/QCDIS/Laserfarm.git
-      - git+https://github.com/eEcoLiDAR/laserchicken.git
+      - git+https://github.com/QCDIS/laserchicken.git
