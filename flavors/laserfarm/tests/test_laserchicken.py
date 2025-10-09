@@ -23,6 +23,8 @@ def download_file_and_load(url, output_path):
 
     point_cloud = load(output_path)
 
+    print(f"Loaded  {len(point_cloud)} points from {output_path}")
+
 
 # https://geotiles.citg.tudelft.nl/
 
