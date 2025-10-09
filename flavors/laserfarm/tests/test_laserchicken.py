@@ -11,7 +11,6 @@ from laserchicken.compute_neighbors import compute_neighborhoods
 
 
 from laserchicken import load
-# Download a sample point cloud from https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_25FN2.LAZ
 import requests
 
 def download_file_and_load(url, output_path):
@@ -25,14 +24,14 @@ def download_file_and_load(url, output_path):
     point_cloud = load(output_path)
 
 
-
-url = "https://ns_hwh.fundaments.nl/hwh-ahn/ahn4/01_LAZ/C_26AN2.LAZ"
-output_path = "C_26AN2.LAZ"
+# https://geotiles.citg.tudelft.nl/
+url = "https://basisdata.nl/hwh-ahn/ahn4/01_LAZ/C_24FZ2.LAZ"
+output_path = "C_24FZ2.LAZ"
 
 download_file_and_load(url, output_path)
 
-url = "https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_25FN2.LAZ"
-output_path = "2023_C_25FN2.LAZ"
+url = "https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_24FZ2.LAZ"
+output_path = "2023_C_24FZ2.LAZ"
 
 
 download_file_and_load(url, output_path)
