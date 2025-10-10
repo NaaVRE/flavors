@@ -1,0 +1,7 @@
+name: mercury
+channels:
+  - conda-forge
+dependencies:
+  - pip
+  - pip:
+    - mercury
