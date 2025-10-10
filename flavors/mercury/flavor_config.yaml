@@ -1,5 +1,0 @@
-flavor_name: mercury
-build_jupyter: True
-build_cell_base: False
-free_disk_space: False
-aliases: []
