@@ -106,7 +106,3 @@ print(results.richness)
 # In this example the second site showed a significant decrease in Richness over time (p<0.05)
 
 final_results <- merge(md,results.richness, by = "siteid"); final_results
-
-# Delete files created
-file.remove("metadata_Example.csv")
-file.remove("data_Example.csv")
