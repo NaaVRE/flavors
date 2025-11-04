@@ -59,12 +59,8 @@ data <- data %>% # Keep data from these sites
 md <- md %>% # Keep metadata from these sites
   filter(siteid %in% md$siteid)
 
-md_final <- md[,c(1:8)]
+metadata_final <- md[, c(1:8)]
 data_final <- data[,c(1:15)]
-
-print("wrinting metadata to file 'metadata_Example.csv'")
-write.csv(md_final, file = "metadata_Example.csv")
-write.csv(data_final, file = "data_Example.csv")
 
 # Trend analysis----
 library(vegan)
@@ -73,9 +69,8 @@ library(ggplot2)
 library(nlme)
 
 # Load cleaned data & metadata
-print("reading metadata and data from files 'metadata_Example.csv' and 'data_Example.csv'")
-md <- read.csv("metadata_Example.csv", sep = ",")
-data <- read.csv("data_Example.csv", sep = ",")
+md <- metadata_final
+data <- data_final
 data$year <- as.numeric(format(as.Date(data$datecollected), "%Y"))
 colnames(data)
 
