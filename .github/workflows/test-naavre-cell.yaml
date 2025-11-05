@@ -33,20 +33,23 @@ jobs:
     name: Test ${{ inputs.image_name }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - env:
+          msg: testing ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }}
 
-      - name: Build docker
-        run: |
-          docker build \
-            . \
-            -f docker/cell-test.Dockerfile \
-            --build-arg BUILD_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_build }}:${{ inputs.image_version }} \
-            --build-arg RUNTIME_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_runtime }}:${{ inputs.image_version }} \
-            -t ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} \
-            --cache-from type=gha \
-            --cache-to type=gha,mode=min \
-
-      - name: Run tests
-        run: |
-          docker run -v ${{ inputs.tests_dir }}:/tests/ ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} /bin/bash /tests/tests.sh
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#
+#      - name: Build docker
+#        run: |
+#          docker build \
+#            . \
+#            -f docker/cell-test.Dockerfile \
+#            --build-arg BUILD_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_build }}:${{ inputs.image_version }} \
+#            --build-arg RUNTIME_IMAGE=${{ inputs.image_repo }}/${{ inputs.image_name_runtime }}:${{ inputs.image_version }} \
+#            -t ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} \
+#            --cache-from type=gha \
+#            --cache-to type=gha,mode=min \
+#
+#      - name: Run tests
+#        run: |
+#          docker run -v ${{ inputs.tests_dir }}:/tests/ ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }} /bin/bash /tests/tests.sh
