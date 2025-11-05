@@ -21,7 +21,7 @@ def download_file_and_load(url, output_path):
             f.write(chunk)
     print(f"Downloaded to {output_path}")
 
-    point_cloud = load(output_path)
+    point_cloud = load(output_path, attributes = ["x","y","z", "classification", "number_of_returns", "return_number"])
 
     print(f"Loaded  {len(point_cloud)} points from {output_path}")
 
@@ -34,9 +34,8 @@ output_path = "C_20BN2.LAZ"
 
 download_file_and_load(url, output_path)
 
-# # AHN5
-# url = "https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_20BN2.LAZ"
-# output_path = "2023_C_20BN2.LAZ"
-#
-#
-# download_file_and_load(url, output_path)
+# AHN5
+url = "https://basisdata.nl/hwh-ahn/AHN5/01_LAZ/2023_C_20BN2.LAZ"
+output_path = "2023_C_20BN2.LAZ"
+
+download_file_and_load(url, output_path)
