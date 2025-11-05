@@ -25,8 +25,8 @@ jobs:
     name: Test ${{ inputs.image_name }}
     runs-on: ubuntu-latest
     steps:
-      - env:
-          msg: testing ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }}
+      - run: |
+          echo testing ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }}
 
 #      - name: Checkout
 #        uses: actions/checkout@v4

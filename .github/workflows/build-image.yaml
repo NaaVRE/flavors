@@ -34,8 +34,8 @@ jobs:
     name: Build ${{ inputs.image_name }}
     runs-on: ubuntu-latest
     steps:
-      - env:
-          msg: building ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }}
+      - run: |
+          echo building ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.image_version }}
 
 #      - name: Free Up GitHub Actions Ubuntu Runner Disk Space
 #        uses: jlumbroso/free-disk-space@v1.3.1

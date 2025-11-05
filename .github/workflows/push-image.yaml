@@ -30,8 +30,8 @@ jobs:
     name: Push ${{ inputs.image_name }}
     runs-on: ubuntu-latest
     steps:
-      - env:
-          msg: pushing ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.rel_image_version }} ${{ inputs.image_repo }}/${{ inputs.image_name }}:latest
+      - run: |
+          echo pushing ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.rel_image_version }} ${{ inputs.image_repo }}/${{ inputs.image_name }}:latest
 
 #      - name: Set up Docker Buildx
 #        uses: docker/setup-buildx-action@v3
