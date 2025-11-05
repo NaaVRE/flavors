@@ -105,7 +105,11 @@ jobs:
   push-cell-build:
     uses: ./.github/workflows/push-image.yaml
     needs: [test-naavre-cell, test-jupyter]
-    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_cell_base }}
+    if: |
+      always() &&
+      needs.configure-workflow.outputs.should_skip != 'true' &&
+      github.event_name == 'release' &&
+      inputs.build_cell_base
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_repo: ${{ inputs.image_repo }}
@@ -115,7 +119,11 @@ jobs:
   push-cell-runtime:
     uses: ./.github/workflows/push-image.yaml
     needs: [test-naavre-cell, test-jupyter]
-    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_cell_base }}
+    if: |
+      always() &&
+      needs.configure-workflow.outputs.should_skip != 'true' &&
+      github.event_name == 'release' &&
+      inputs.build_cell_base
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
       image_repo: ${{ inputs.image_repo }}
@@ -125,7 +133,11 @@ jobs:
   push-jupyter:
     uses: ./.github/workflows/push-image.yaml
     needs: [test-naavre-cell, test-jupyter]
-    if: ${{ needs.configure-workflow.outputs.should_skip != 'true' && github.event_name == 'release' && inputs.build_jupyter }}
+    if: |
+      always() &&
+      needs.configure-workflow.outputs.should_skip != 'true' &&
+      github.event_name == 'release' &&
+      inputs.build_jupyter
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
       image_repo: ${{ inputs.image_repo }}
