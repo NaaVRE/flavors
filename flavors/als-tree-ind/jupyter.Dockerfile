@@ -9,7 +9,6 @@ RUN apt-get update && \
 RUN cd /bin \
     && git clone https://github.com/Jinhu-Wang/Workflow_ALS_Trees.git \
     && cd Workflow_ALS_Trees/clipping \
-    && git submodule update --init --recursive \
     && mkdir release && cd release \
     && cmake -DCMAKE_BUILD_TYPE=Release .. \
     && make
