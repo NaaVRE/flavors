@@ -7,11 +7,11 @@ RUN apt-get update && \
     apt autoremove -y
 
 RUN cd /bin \
-    && git clone https://github.com/Jinhu-Wang/Workflow_ALS_Trees.git \
-    && cd Workflow_ALS_Trees/clipping \
-    && mkdir release && cd release \
-    && cmake -DCMAKE_BUILD_TYPE=Release .. \
-    && make
+ && git clone --depth=1 https://github.com/Jinhu-Wang/Workflow_ALS_Trees.git \
+ && cd Workflow_ALS_Trees \
+ && for d in clipping retile_by_count retile_by_size; do \
+      cd "$d" && mkdir -p release && cd release && cmake -DCMAKE_BUILD_TYPE=Release .. && make && cd ../..; \
+    done
 
 FROM quay.io/jupyter/minimal-notebook:lab-4.3.6
 
@@ -32,4 +32,4 @@ RUN conda env create -f environment.yaml && \
     conda clean -a
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
-COPY --from=workflow_als_trees /bin/Workflow_ALS_Trees/clipping/release/ /bin/Workflow_ALS_Trees/clipping/release/
+COPY --from=workflow_als_trees /bin/Workflow_ALS_Trees/ /bin/Workflow_ALS_Trees/
