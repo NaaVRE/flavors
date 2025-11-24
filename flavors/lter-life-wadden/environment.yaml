@@ -75,3 +75,10 @@ dependencies:
   - r-lazyeval
   - r-rcpproll
   - r-mapproj
+  # Dependencies for Jetty primary Productivity
+  - r-plotly
+  - r-mgcv
+  - r-ggplot2
+  - r-lubridate
+  - r-dplyr
+  - r-pracma
