@@ -16,4 +16,4 @@ RUN micromamba create -y -n venv -f environment.yaml && \
     micromamba clean --all --yes
 
 COPY --from=build-trias /opt/conda/conda-bld/linux-64/r-trias-2.0.7-r43_0.tar.bz2 .
-#RUN conda install r-trias-2.0.7-r43_0.tar.bz2
+#RUN mamba install --y r-trias-2.0.7-r43_0.tar.bz2

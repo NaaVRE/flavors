@@ -25,3 +25,4 @@ dependencies:
   - r-vegan
   - r-ggplot2
   - r-nlme
+  - r-tidyr
