@@ -42,7 +42,7 @@ jobs:
 
       - name: Retag image
         run: |
-          docker buildx imagetools create \
+          echo docker buildx imagetools create \
             --tag ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.new_image_version }} \
             --tag ${{ inputs.image_repo }}/${{ inputs.image_name }}:latest \
             ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.old_image_version }}
