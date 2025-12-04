@@ -2,6 +2,4 @@ flavor_name: als-tree-ind
 build_jupyter: True
 build_cell_base: True
 free_disk_space: False
-aliases:
-  - python
-  - r
+aliases: []
