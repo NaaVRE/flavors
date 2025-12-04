@@ -38,6 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       should_skip: ${{ steps.skip_check.outputs.should_skip }}
+      skipped_by: ${{ steps.skip_check.outputs.skipped_by }}
     steps:
       - id: skip_check
         name: Configure skip-duplicate-actions
@@ -45,6 +46,13 @@ jobs:
         with:
           paths: '[".github/**", "docker/**", "flavors/${{ inputs.flavor_name }}/**"]'
           do_not_skip: '["workflow_dispatch", "schedule"]'
+
+  print-value:
+    runs-on: ubuntu-latest
+    needs: configure-workflow
+    steps:
+      - run: |
+          echo "skipped_by: ${{ needs.configure-workflow.outputs.skipped_by }}"
 
   build-cell-build:
     uses: ./.github/workflows/build-image.yaml
