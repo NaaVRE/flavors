@@ -43,7 +43,8 @@ jobs:
         name: Configure skip-duplicate-actions
         uses: fkirc/skip-duplicate-actions@v5
         with:
-          paths: '[".github/**", "docker/**", "flavors/${{ inputs.flavor_name }}/**"]'
+#          paths: '["docker/**", "flavors/${{ inputs.flavor_name }}/**"]'
+          paths: '["docker/**", "flavors/${{ inputs.flavor_name }}/**"]'
           do_not_skip: '["workflow_dispatch", "schedule"]'
 
   build-cell-build:
