@@ -11,11 +11,11 @@ on:
         description: 'Docker image repo'
         type: string
         required: true
-      old_image_version:
+      ci_image_version:
         description: 'Docker image version'
         type: string
         required: true
-      new_image_version:
+      rel_image_version:
         description: 'Docker image version'
         type: string
         required: true
@@ -42,7 +42,4 @@ jobs:
 
       - name: Retag image
         run: |
-          docker buildx imagetools create \
-            --tag ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.new_image_version }} \
-            --tag ${{ inputs.image_repo }}/${{ inputs.image_name }}:latest \
-            ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.old_image_version }}
+          docker buildx imagetools create --tag ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.rel_image_version }} --tag ${{ inputs.image_repo }}/${{ inputs.image_name }}:latest ${{ inputs.image_repo }}/${{ inputs.image_name }}:${{ inputs.ci_image_version }}

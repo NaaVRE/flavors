@@ -44,7 +44,7 @@ jobs:
         uses: fkirc/skip-duplicate-actions@v5
         with:
           paths: '[".github/**", "docker/**", "flavors/${{ inputs.flavor_name }}/**"]'
-          do_not_skip: '["workflow_dispatch", "schedule"]'
+          do_not_skip: '["workflow_dispatch", "schedule", "release"]'
 
   build-cell-build:
     uses: ./.github/workflows/build-image.yaml
@@ -102,42 +102,45 @@ jobs:
       image_version: ${{ inputs.ci_image_version }}
       tests_dir: './flavors/${{ inputs.flavor_name }}/tests/'
 
-  retag-cell-build:
-    uses: ./.github/workflows/retag-image.yaml
-    needs: [configure-workflow, test-naavre-cell, test-jupyter]
+  push-cell-build:
+    uses: ./.github/workflows/push-image.yaml
+    needs: [test-naavre-cell, test-jupyter]
     if: |
       always() &&
+      needs.configure-workflow.outputs.should_skip != 'true' &&
       github.event_name == 'release' &&
       inputs.build_cell_base
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-build
       image_repo: ${{ inputs.image_repo }}
-      old_image_version: ${{ needs.configure-workflow.outputs.should_skip == 'true' && 'latest' || inputs.ci_image_version  }}
-      new_image_version: ${{ inputs.rel_image_version }}
+      ci_image_version: ${{ inputs.ci_image_version }}
+      rel_image_version: ${{ inputs.rel_image_version }}
 
-  retag-cell-runtime:
-    uses: ./.github/workflows/retag-image.yaml
-    needs: [configure-workflow, test-naavre-cell, test-jupyter]
+  push-cell-runtime:
+    uses: ./.github/workflows/push-image.yaml
+    needs: [test-naavre-cell, test-jupyter]
     if: |
       always() &&
+      needs.configure-workflow.outputs.should_skip != 'true' &&
       github.event_name == 'release' &&
       inputs.build_cell_base
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-cell-runtime
       image_repo: ${{ inputs.image_repo }}
-      old_image_version: ${{ needs.configure-workflow.outputs.should_skip == 'true' && 'latest' || inputs.ci_image_version  }}
-      new_image_version: ${{ inputs.rel_image_version }}
+      ci_image_version: ${{ inputs.ci_image_version }}
+      rel_image_version: ${{ inputs.rel_image_version }}
 
-  retag-jupyter:
-    uses: ./.github/workflows/retag-image.yaml
-    needs: [configure-workflow, test-naavre-cell, test-jupyter]
+  push-jupyter:
+    uses: ./.github/workflows/push-image.yaml
+    needs: [test-naavre-cell, test-jupyter]
     if: |
       always() &&
+      needs.configure-workflow.outputs.should_skip != 'true' &&
       github.event_name == 'release' &&
       inputs.build_jupyter
     with:
       image_name: naavre-fl-${{ inputs.flavor_name }}-jupyter
       image_repo: ${{ inputs.image_repo }}
-      old_image_version: ${{ needs.configure-workflow.outputs.should_skip == 'true' && 'latest' || inputs.ci_image_version  }}
-      new_image_version: ${{ inputs.rel_image_version }}
+      ci_image_version: ${{ inputs.ci_image_version }}
+      rel_image_version: ${{ inputs.rel_image_version }}
       free_disk_space: ${{ inputs.free_disk_space }}
