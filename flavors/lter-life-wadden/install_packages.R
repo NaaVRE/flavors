@@ -4,7 +4,7 @@ library('tools4watlas')
 devtools::install_github('allertbijleveld/SIBES@24d3f06418a8aca77db4e7fbef66c45dc55873f8', dependencies = FALSE)
 library('SIBES')
 
-devtools::install_github('TempSED/TempSED@1a29a181b660ac6b2e3f038fcdc1c659e0f0962c', depend = TRUE)
+devtools::install_github('TempSED/TempSED@a3c90c1766c52a64fd7f1d20470e10d7b198f3dd', build_vignettes = TRUE, dependencies = TRUE)
 require('TempSED')
 
 devtools::install_github('leonawicz/mapmate@7c36274078c4b6ffbd9dcc278f3176b7535ba86f', dependencies = FALSE)
