@@ -82,3 +82,6 @@ dependencies:
   - r-lubridate
   - r-dplyr
   - r-pracma
+  # Dependencies for TempSED
+  - r-rootsolve
+  - r-shape
