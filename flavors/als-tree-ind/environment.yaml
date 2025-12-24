@@ -20,3 +20,4 @@ dependencies:
   - pip:
     - SecretsProvider
   # user packages for this flavor
+  - laspy
