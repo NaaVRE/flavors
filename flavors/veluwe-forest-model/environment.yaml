@@ -31,6 +31,11 @@ dependencies:
   - r-ggplot2
   - r-terra
   - r-processx
+  - r-readr
+  - r-dplyr
+  - r-tidyr
+  - r-stringr
+  - r-lubridate
   - git
   - python>=3.9
   - pip
