@@ -5,21 +5,16 @@ source /venv/bin/activate || eval "$(conda shell.bash activate veluwe-forest-mod
 
 target_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 cd "$target_dir"
-chmod -R 777 .
 
 find "$dir" -maxdepth 1 -name "*.py" -print0 | xargs --null -I "{}" python "{}"
 find "$dir" -maxdepth 1 -name "*.R" -print0 | xargs --null -I "{}" Rscript "{}"
 
 cleanup() {
     echo "Cleaning up LANDIS output files..."
-    rm -f Landis-log.txt
-    rm -f Landis-climate-log.txt
-    rm -rf output/
-    rm -rf Output/
-    rm -rf DFFS-output/
-    rm -rf Metadata/
-    rm -f *.tif
-    rm -f *.csv
+    if [ "$CI" != "true" ]; then
+        rm -f Landis-log.txt Landis-climate-log.txt *.tif *.csv
+        rm -rf output/ Output/ DFFS-output/ Metadata/
+    fi
 }
 
 trap cleanup EXIT

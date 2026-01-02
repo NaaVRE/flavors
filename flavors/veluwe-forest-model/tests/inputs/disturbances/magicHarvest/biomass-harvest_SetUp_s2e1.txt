@@ -32,6 +32,8 @@ Prescription AbiesRemoval
 	
 	abiebals All
 
+
+
 >> ----------------------------------
 >> HARVESTING IMPLEMENTATION 
 >> ---------------------------------
@@ -39,7 +41,7 @@ Prescription AbiesRemoval
     HarvestImplementations
 >>	Mgmt Area	Prescription		Harvest Area	BeginTime	EndTime
 >> 	---------   	------------   		------------   	---------- 	--------
-	1		MaxAgeClearcut		10%		
+	1		AbiesRemoval		5%		
 
 
 
