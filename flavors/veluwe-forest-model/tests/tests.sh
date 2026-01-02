@@ -9,6 +9,8 @@ cd "$target_dir"
 find "$dir" -maxdepth 1 -name "*.py" -print0 | xargs --null -I "{}" python "{}"
 find "$dir" -maxdepth 1 -name "*.R" -print0 | xargs --null -I "{}" Rscript "{}"
 
+mkdir -m 777 output/ Output/ DFFS-output/ Metadata/
+
 cleanup() {
     echo "Cleaning up LANDIS output files..."
     if [ "$CI" != "true" ]; then
