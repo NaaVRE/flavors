@@ -1,0 +1,27 @@
+LandisData  "PnET-Succession"											
+	
+PnET-Succession		Value
+<<-----------------------------
+										
+Timestep  10	
+StartYear	2000															
+SeedingAlgorithm	WardSeedDispersal						
+Latitude	42										
+>> MaxDevLyrAv	8000	
+
+PNEToutputsites 	./inputs/output/PnETCellOutput/PnEToutputsites_onecell.txt
+									
+InitialCommunities      ./inputs/succession/initial-communities.csv											
+InitialCommunitiesMap   ./inputs/succession/initial-communities.img	
+
+PnETSpeciesParameters	./inputs/succession/SpeciesParameters.txt
+											
+EcoregionParameters	./inputs/succession/EcoregionParameters.txt	
+
+ClimateConfigFile	./inputs/disturbances/climateSocialFire/climate-generator-baseline.txt
+   								
+PnETGenericParameters		./inputs/succession/PnETGenericParameters.txt
+
+DisturbanceReductions	./inputs/succession/disturbance_reductions.txt
+ 											
+ 										
