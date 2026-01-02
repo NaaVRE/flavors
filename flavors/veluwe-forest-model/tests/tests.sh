@@ -5,6 +5,7 @@ source /venv/bin/activate || eval "$(conda shell.bash activate veluwe-forest-mod
 
 target_dir=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &> /dev/null && pwd)
 cd "$target_dir"
+chmod -R 777 .
 
 find "$dir" -maxdepth 1 -name "*.py" -print0 | xargs --null -I "{}" python "{}"
 find "$dir" -maxdepth 1 -name "*.R" -print0 | xargs --null -I "{}" Rscript "{}"
