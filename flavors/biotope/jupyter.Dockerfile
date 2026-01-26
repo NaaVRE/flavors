@@ -17,8 +17,6 @@ RUN mamba env create --yes -f environment.yaml && \
     mamba clean --all --yes
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
-RUN /opt/conda/envs/biotope/bin/R -e "devtools::install_github('trias-project/trias@5d0f27f76567c0d11021a3055c32ec521622ca36')"
-
 USER root
 
 # OTB from the ZonalFilter dockerfile
@@ -44,6 +42,9 @@ RUN wget https://www.orfeo-toolbox.org/packages/archives/OTB/OTB-7.3.0-Linux64.r
 WORKDIR /usr/local/lw_apps/
 ADD ./flavors/biotope/OTB .
 RUN  LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu/ cmake -D CMAKE_INSTALL_PREFIX=/usr/local/otb && make install
+
+COPY ./flavors/biotope/install_packages.R .
+RUN mamba run -n biotope bash -c "Rscript install_packages.R"
 
 USER $NB_USER
 WORKDIR /home/$NB_USER

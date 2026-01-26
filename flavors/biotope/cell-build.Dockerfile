@@ -8,5 +8,7 @@ COPY --chown=mambauser:mambauser ${CONDA_ENV_FILE?} environment.yaml
 RUN micromamba create -y -n venv -f environment.yaml && \
     micromamba clean --all --yes
 
-RUN /opt/conda/envs/venv/bin/R -e "devtools::install_github('trias-project/trias@v2.0.7')"
 #RUN mamba install --yes r-trias-2.0.7-r43_0.tar.bz2
+
+COPY ./flavors/biotope/install_packages.R .
+RUN micromamba run -n venv bash -c "Rscript install_packages.R"
