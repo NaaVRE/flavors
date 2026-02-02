@@ -36,9 +36,8 @@ dependencies:
   - r-tidyr
   - r-stringr
   - r-lubridate
-  - r-odbc
+  - r-hmisc
   - mdbtools
-  - unixodbc
   - git
   - python>=3.9
   - pip
