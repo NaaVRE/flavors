@@ -37,6 +37,7 @@ dependencies:
   - r-stringr
   - r-lubridate
   - r-odbc
+  - r-sf
   - mdbtools
   - unixodbc
   - git
