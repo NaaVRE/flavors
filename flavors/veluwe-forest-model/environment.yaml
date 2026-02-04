@@ -37,6 +37,7 @@ dependencies:
   - r-stringr
   - r-lubridate
   - r-hmisc
+  - r-sf
   - mdbtools
   - git
   - python>=3.9
