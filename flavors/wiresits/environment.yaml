@@ -9,6 +9,7 @@ dependencies:
   - r-irkernel=1.3.2
   # user packages for all flavors
   - git=2.49.0
+  - jq>=1.8
   - minio=7.2.15
   - python>=3.8
   - r-secretsprovider=1.0.0=r43hc72bb7e_0

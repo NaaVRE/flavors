@@ -5,6 +5,7 @@ channels:
 dependencies:
   - ipykernel>=6.29.5
   - git>=2.39.1
+  - jq>=1.8
   - minio>=7.2.15
   - pip>=25.0.1
   - python>=3.8
