@@ -1,10 +1,9 @@
 # NaaVRE aneris-dna flavor
 
 <!-- vscode-markdown-toc -->
-- [NaaVRE aneris-dna flavor](#naavre-aneris-dna-flavor)
-  - [Build \& run](#build--run)
-    - [Build](#build)
-    - [Run](#run)
+* [Build & run](#Buildrun)
+	* [Build](#Build)
+	* [Run](#Run)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
