@@ -1,0 +1,49 @@
+name: anecvs
+channels:
+  - conda-forge
+dependencies:
+  # naavre-fl-*-cell-build
+  - r-jsonlite=1.9.1
+  - r-optparse=1.7.5
+  # naavre-fl-*-jupyter
+  - ipykernel=6.29.5
+  - r-irkernel=1.3.2
+  # user packages for all flavors
+  - git=2.49.0
+  - minio=7.2.15
+  - pip=25.0.1
+  - python>=3.8
+  - r=4.4
+  - r-secretsprovider
+  - r-getpass
+  - r-aws.s3
+  - pip:
+    - SecretsProvider
+  # user packages for this flavor
+  # -----
+  - pytz
+  - idna
+  - cycler
+  - fonttools
+  - contourpy
+  - packaging
+  - pure_eval
+  - executing
+  - sniffio
+  - pycparser 
+  - pyparsing
+  - requests
+  - urllib3
+  - matplotlib
+  - numpy
+  - pandas
+  - shapely
+  - pillow
+  - kiwisolver
+  # - geopandas=0.10.2
+  # - rdflib=6.1.1
+  # # - r-devtools=2.4.5
+  # - r-tidyverse
+  # # - r-dplyr
+  # # - r-tidyr
+  # - r-vegan
