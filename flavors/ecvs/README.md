@@ -38,4 +38,4 @@ docker run -it -p 8888:8888 --name ecvs-jupyter --volume="//c/DockerShare/ECVs:/
 docker exec -it ecvs-jupyter bash
 ```
 
-http://localhost:8888/lab?token=8cc65e14c4f8522d32665950d6cbde0bb36f263309650cd7
+http://localhost:8888/lab?token=badccc6e5b23e5042b9c7ead2f22db5f6ca5b9592d716c18

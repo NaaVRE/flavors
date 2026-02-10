@@ -1,4 +1,4 @@
-name: anecvs
+name: ecvs
 channels:
   - conda-forge
 dependencies:
