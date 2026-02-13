@@ -32,9 +32,9 @@ docker build . -f flavors/aneris-dna/jupyter.Dockerfile --progress plain      --
 # dir_data = "/home/jovyan/Cloud Storage/naa-vre-user-data"
 
 docker system prune -f
-docker run -it -p 8888:8888 --name aneris-dna-jupyter --volume="//c/DockerShare/ANERIS_DNA:/home/jovyan" naavre-fl-aneris-dna-jupyter:local
+docker run -it -p 8888:8888 -e JUPYTER_TOKEN="mytoken" --name aneris-dna-jupyter --volume="//c/DockerShare/ANERIS_DNA:/home/jovyan" naavre-fl-aneris-dna-jupyter:local
 
 docker exec -it aneris-dna-jupyter bash
 ```
 
-http://localhost:8888/lab?token=8cc65e14c4f8522d32665950d6cbde0bb36f263309650cd7
+http://localhost:8888/lab?token=mytoken
