@@ -21,6 +21,7 @@ dependencies:
     - SecretsProvider
   # user packages for this flavor
   # -----
+  # 01-Access-AnaEE
   - pytz
   - idna
   - cycler
@@ -40,6 +41,9 @@ dependencies:
   - shapely
   - pillow
   - kiwisolver
+  # 02-Access-Argo
+  - argopy
+  - sparqlwrapper
   # - geopandas=0.10.2
   # - rdflib=6.1.1
   # # - r-devtools=2.4.5

@@ -33,9 +33,9 @@ docker build . -f flavors/ecvs/jupyter.Dockerfile --progress plain      --build-
 # dir_data = "/home/jovyan/Cloud Storage/naa-vre-user-data"
 
 docker system prune -f
-docker run -it -p 8888:8888 --name ecvs-jupyter --volume="//c/DockerShare/ECVs:/home/jovyan" naavre-fl-ecvs-jupyter:local
+docker run -it -p 8888:8888 -e JUPYTER_TOKEN="mytoken" --name ecvs-jupyter --volume="//c/DockerShare/ECVs:/home/jovyan" naavre-fl-ecvs-jupyter:local
 
 docker exec -it ecvs-jupyter bash
 ```
 
-http://localhost:8888/lab?token=ac328bb70877f6839cd513cb01f56716ee86eada70c87fa0
+http://localhost:8888/lab?token=mytoken
