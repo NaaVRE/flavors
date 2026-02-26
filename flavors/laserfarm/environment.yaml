@@ -46,6 +46,7 @@ dependencies:
   - shapely
   - webdavclient3
   - wradlib
+  - rasterio
   - pip:
       - git+https://github.com/QCDIS/Laserfarm.git
       - git+https://github.com/QCDIS/laserchicken.git
