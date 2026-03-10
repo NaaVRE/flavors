@@ -19,8 +19,6 @@ dependencies:
   - r-aws.s3
   - pip:
     - SecretsProvider
-    # NIS
-    # -----
     - searoute
   # user packages for this flavor
   # DNA
@@ -31,14 +29,12 @@ dependencies:
   - numpy
   - pandas
   - cartopy
-  - zipfile
-  # library: Introduced species Checker
-  - geopandas=0.10.2
   # NIS
   # -----
-  - urllib
+  # - urllib, urllib3
   - tqdm
-  - searoute
+  # library: Introduced species Checker
+  - geopandas=0.10.2
   # DNA
   # -----
   - rdflib=6.1.1
