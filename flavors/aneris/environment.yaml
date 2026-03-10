@@ -1,4 +1,4 @@
-name: aneris-dna
+name: aneris
 channels:
   - conda-forge
 dependencies:
@@ -19,7 +19,11 @@ dependencies:
   - r-aws.s3
   - pip:
     - SecretsProvider
+    # NIS
+    # -----
+    - searoute
   # user packages for this flavor
+  # DNA
   # -----
   - requests
   - nest-asyncio
@@ -27,8 +31,16 @@ dependencies:
   - numpy
   - pandas
   - cartopy
+  - zipfile
   # library: Introduced species Checker
   - geopandas=0.10.2
+  # NIS
+  # -----
+  - urllib
+  - tqdm
+  - searoute
+  # DNA
+  # -----
   - rdflib=6.1.1
   # - r-devtools=2.4.5
   - r-tidyverse
