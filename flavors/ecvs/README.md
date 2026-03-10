@@ -1,7 +1,7 @@
-# NaaVRE ECVs flavor
+# NaaVRE ecvs flavor
 
 <!-- vscode-markdown-toc -->
-- [NaaVRE ECVs flavor](#naavre-ecvs-flavor)
+- [NaaVRE ecvs flavor](#naavre-ecvs-flavor)
   - [Build \& run](#build--run)
     - [Build](#build)
     - [Run](#run)
