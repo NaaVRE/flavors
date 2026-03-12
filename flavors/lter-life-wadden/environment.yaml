@@ -13,7 +13,6 @@ dependencies:
   - jq>=1.8
   - minio>=7.2.15
   - pip>=25.0.1
-  # - python>=3.8 # version overridden below
   - r #>=4.4
   - r-secretsprovider
   - r-getpass
@@ -33,7 +32,7 @@ dependencies:
   - make
   # Acolite
   # (Acolite doesn't run on Python 3.12 yet)
-  - python<=3.11
+  - python==3.11
   - pyresample
   - cartopy
   - scipy
