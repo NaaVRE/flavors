@@ -31,3 +31,4 @@ dependencies:
     # pip packages for this flavor
     - seisbench
     - pyocto
+    - xdas
