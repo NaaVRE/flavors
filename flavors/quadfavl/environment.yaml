@@ -10,6 +10,7 @@ dependencies:
   - r-irkernel>=1.3.2
   # user packages for all flavors
   - git>=2.49.0
+  - jq>=1.8
   - minio>=7.2.15
   - r>=4.3
   - r-secretsprovider
@@ -18,6 +19,7 @@ dependencies:
   # user packages for this flavor
   # (intentionally empty in vanilla)
   - hdf5
+  - python>=3.8
   - proj
   - gsl
   - pkg-config

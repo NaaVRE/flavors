@@ -10,6 +10,7 @@ dependencies:
   - r-irkernel=1.3.2
   # user packages for all flavors
   - git=2.49.0
+  - jq>=1.8
   - minio=7.2.15
   - pip=25.0.1
   - python>=3.8
@@ -37,9 +38,9 @@ dependencies:
   - r-stringr
   - r-lubridate
   - r-odbc
+  - r-hmisc
   - r-sf
   - mdbtools
-  - unixodbc
   - git
   - python>=3.9
   - pip

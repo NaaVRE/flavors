@@ -1,4 +1,4 @@
-name: als-tree-ind
+name: homeros-seismology
 channels:
   - conda-forge
 dependencies:
@@ -13,12 +13,22 @@ dependencies:
   - jq>=1.8
   - minio=7.2.15
   - pip=25.0.1
-  - python>=3.8
+  - python>=3.10
   - r=4.4
   - r-secretsprovider
   - r-getpass
   - r-aws.s3
-  - pip:
-    - SecretsProvider
   # user packages for this flavor
-  - cmake
+  - numpy>=1.21.6,<2.0.0
+  - pandas
+  - matplotlib
+  - cartopy
+  - obspy
+  - pytorch
+  - pip:
+    # pip package for all flavors
+    - SecretsProvider
+    # pip packages for this flavor
+    - seisbench
+    - pyocto
+    - xdas
