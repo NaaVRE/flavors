@@ -1,4 +1,4 @@
-name: satellite-toolbox
+name: geospatial-toolbox
 channels:
   - conda-forge
 dependencies:
