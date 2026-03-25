@@ -12,7 +12,7 @@ dependencies:
   - git=2.49.0
   - jq>=1.8
   - minio=7.2.15
-  - pip=25.0.1
+  - pip>=25.0.1
   - python>=3.10
   - r=4.4
   - r-secretsprovider
@@ -24,11 +24,30 @@ dependencies:
   - matplotlib
   - cartopy
   - obspy
+  - bottleneck
+  - h5py
+  - nest-asyncio
+  - scipy
   - pytorch
+  - tqdm
+  - typing_extensions
+  - dask=2025.3.1
+  - h5netcdf
+  - hdf5plugin
+  - msgpack-python
+  - numba
+  - obspy
+  - pandas
+  - plotly
+  - pyzmq
+  - setuptools=81.0.0
+  - watchdog
+  - xarray
   - pip:
     # pip package for all flavors
     - SecretsProvider
     # pip packages for this flavor
     - seisbench
     - pyocto
+    - xinterp
     - xdas
