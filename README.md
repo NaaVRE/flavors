@@ -138,3 +138,36 @@ Successful tests should output `0`.
 > [!TIP]
 > NaaVRE images are large and can quickly fill up your machine's storage.
 > If needed, free-up space with `docker image prune [-a]` ([documentation](https://docs.docker.com/reference/cli/docker/image/prune/)).
+
+### Resolving Conda-Pip Conflicts in Flavor Building
+When building environments (or "flavors") with both Conda and pip, dependency conflicts can cause builds to fail. 
+[Follow Conda's recommendation of installing as many packages as possible with Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html#using-pip-in-an-environment).
+
+If flavor build failure persists, install the packages only available on pip in a clean environment and list the dependencies:
+```shell
+!pip install pipdeptree
+!pipdeptree -p <package-name>
+```
+Add as much of the dependencies as possible in conda. 
+
+Retry building the flavor. 
+
+If the flavor doesn't build, build only the conda part of the flavor. When the flavor only contains Conda packages and still doesn't build, the problem is not caused by a conda-pip conflict.
+
+[Run a terminal with the built flavor.](#terminal)
+
+Activate the conda environment:
+```shell
+conda activate <flavor-name>
+```
+
+Install the packages that could not be installed in conda using pip:
+```shell
+!pip install <package-name>
+```
+
+You will get a report of installed packages that hopefully lists some packages where the version has been changed.
+
+Add these version to the conda packages.
+
+Retry building the flavor. Hopefully, the flavor builds successfully.
