@@ -37,6 +37,8 @@ RUN mamba env create --yes -f environment.yaml && \
     mamba clean --all --yes
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
+RUN mkdir -p /tmp/data
+
 RUN /opt/conda/envs/ravl/bin/R -e "install.packages('suntools', repos='https://cran.r-project.org')" && \
     /opt/conda/envs/ravl/bin/R -e "install.packages('bioRad', repos='https://cran.r-project.org')" && \
     /opt/conda/envs/ravl/bin/R -e "library('bioRad')"

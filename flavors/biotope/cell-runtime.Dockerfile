@@ -1,5 +1,7 @@
 FROM ubuntu:24.04
 
+RUN mkdir -p /tmp/data
+
 # OTB from the ZonalFilter dockerfile
 RUN apt-get update && \
     apt-get install -y \

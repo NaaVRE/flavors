@@ -1,5 +1,7 @@
 FROM adokter/vol2bird:0.5.0 AS vol2bird
 
+RUN mkdir -p /tmp/data
+
 RUN apt-get update && \
     apt-get install --no-install-recommends -y libconfuse-dev libhdf5-dev gcc g++ wget unzip make cmake zlib1g-dev python-dev python-numpy libproj-dev flex-old file && \
     apt-get install -y git git-lfs && \

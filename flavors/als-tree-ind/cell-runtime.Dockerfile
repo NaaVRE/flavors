@@ -1,5 +1,7 @@
 FROM ubuntu:24.04
 
+RUN mkdir -p /tmp/data
+
 RUN apt-get update && \
     apt-get install --no-install-recommends -y build-essential cmake && \
     apt-get install -y git && \
