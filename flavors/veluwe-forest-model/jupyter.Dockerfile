@@ -541,6 +541,7 @@ RUN mamba env create --yes -f environment.yaml && \
     mamba clean --all --yes
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
+RUN mkdir -p /tmp/data
 
 COPY --from=landis-ii /bin/LANDIS_Linux /bin/LANDIS_Linux
 COPY --from=landis-ii /bin/.dotnet /bin/.dotnet

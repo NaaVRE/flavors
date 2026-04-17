@@ -524,6 +524,8 @@ RUN git config --global --unset http.version
 
 FROM ubuntu:24.04
 
+RUN mkdir -p /tmp/data
+
 COPY --from=landis-ii /bin/LANDIS_Linux /bin/LANDIS_Linux
 COPY --from=landis-ii /bin/.dotnet /bin/.dotnet
 ENV PATH=${PATH}:/bin/.dotnet

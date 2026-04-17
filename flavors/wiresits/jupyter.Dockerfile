@@ -17,5 +17,7 @@ RUN mamba env create --yes -f environment.yaml && \
     mamba clean --all --yes
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
+RUN mkdir -p /tmp/data
+
 COPY ./flavors/wiresits/install_packages.R .
 RUN mamba run -n wiresits bash -c "export PKG_LIBS=\""'$(pkg-config --libs proj) $(gsl-config --libs)'"\"; Rscript install_packages.R"

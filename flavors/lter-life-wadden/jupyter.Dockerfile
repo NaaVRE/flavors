@@ -17,6 +17,7 @@ RUN mamba env create --yes -f environment.yaml && \
     mamba clean --all --yes
 RUN echo '{"CondaKernelSpecManager": {"env_filter": "/opt/conda$", "conda_only": true}}' >> /home/jovyan/.jupyter/jupyter_config.json
 
+RUN mkdir -p /tmp/data
 
 RUN /opt/conda/envs/lter-life-wadden/bin/git clone --depth 1 --branch 20250114.0 https://github.com/acolite/acolite.git && \
     site_package_dir="$(/opt/conda/envs/lter-life-wadden/bin/python -c  "import site; print(''.join(site.getsitepackages()))")" && \

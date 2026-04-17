@@ -758,30 +758,30 @@ dependencies:
   - zlib-ng=2.2.5=hde8ca8f_1
   - zstandard=0.25.0=py312h5253ce2_1
   - zstd=1.5.7=hb78ec9c_6
+  - asttokens=3.0.1
+  - bottleneck=1.6.0
+  - cachey=0.2.1
+  - comm=0.2.3
+  - decorator=5.2.1
+  - executing=2.2.1
+  - heapdict=1.0.1
+  - ipython=9.12.0
+  - ipython_pygments_lexers==1.1.1
+  - ipywidgets=8.1.8
+  - jedi=0.19.2
+  - jupyterlab_widgets=3.0.16
+  - matplotlib-inline=0.2.1
+  - parso=0.8.6
+  - pexpect=4.9.0
+  - ptyprocess=0.7.0
+  - pure_eval=0.2.3
+  - stack_data=0.6.3
+  - traitlets=5.14.3
+  - widgetsnbextension=4.0.15
   - pip:
     # pip package for all flavors
     - SecretsProvider
     # pip packages for this flavor
-    - asttokens==3.0.1
-    - bottleneck==1.6.0
-    - cachey==0.2.1
-    - comm==0.2.3
-    - decorator==5.2.1
-    - executing==2.2.1
-    - heapdict==1.0.1
-    - ipython==9.11.0
-    - ipython-pygments-lexers==1.1.1
-    - ipywidgets==8.1.8
-    - jedi==0.19.2
-    - jupyterlab-widgets==3.0.16
     - lexcube==1.0.4
-    - matplotlib-inline==0.2.1
     - opencv-python-headless==4.13.0.92
-    - parso==0.8.6
     - pdal-plugins==1.6.2
-    - pexpect==4.9.0
-    - ptyprocess==0.7.0
-    - pure-eval==0.2.3
-    - stack-data==0.6.3
-    - traitlets==5.14.3
-    - widgetsnbextension==4.0.15
