@@ -13,7 +13,7 @@ dependencies:
   - jq>=1.8
   - minio>=7.2.15
   - pip>=25.0.1
-  - r #>=4.4
+  - r>=4.4
   - r-secretsprovider
   - r-getpass
   - r-aws.s3
@@ -60,7 +60,6 @@ dependencies:
   - r-rosm
   - r-zoo
   - r-viridis
-  - r::r-tidyterra
   - r-RSQLite
   - r-RMySQL
   - r-patchwork
