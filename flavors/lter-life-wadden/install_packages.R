@@ -1,6 +1,9 @@
 install.packages("ReacTran", repos="https://cran.r-project.org", dependencies = FALSE)
 library("ReacTran")
 
+install.packages("tidyterra", repos="https://cran.r-project.org", dependencies = FALSE)
+library("tidyterra")
+
 devtools::install_github('krietsch/tools4watlas@952cb1038c862075bb2df2dfc061e2df87b04340', dependencies = FALSE)
 library('tools4watlas')
 
