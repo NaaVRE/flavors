@@ -36,8 +36,7 @@ dependencies:
   - r-cli
   - r-rcpparmadillo
   - r-pak
-  - r-devtools
-  - r-remotes
+  - r-devtools=2.5.0
   - pandas
   - geopandas
   - matplotlib
