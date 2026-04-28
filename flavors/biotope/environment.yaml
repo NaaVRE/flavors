@@ -21,7 +21,7 @@ dependencies:
   - pip:
     - SecretsProvider
   # user packages for this flavor
-  - r-devtools
+  - r-devtools=2.5.0
   - openssl
   - curl
   - wget

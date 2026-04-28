@@ -28,7 +28,7 @@ dependencies:
   - r-sf
   - r-ncdf4
   - r-tidyverse
-  - r-devtools
+  - r-devtools=2.5.0
   - make
   # Acolite
   # (Acolite doesn't run on Python 3.12 yet)
