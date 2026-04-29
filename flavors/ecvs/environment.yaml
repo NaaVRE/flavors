@@ -38,6 +38,7 @@ dependencies:
   - xarray
   - shapely
   - rasterio
+  - gdal
   # 01-Access-AnaEE
   - pytz
   - idna
@@ -60,6 +61,11 @@ dependencies:
   - cartopy
   # envri-hub
   - openapi-spec-validator
+  # EPOS
+  - owslib
+  - pyproj
+  # ICOS
+  # icoscp_core
   # beacon_api
   - pyarrow
   - geopy
