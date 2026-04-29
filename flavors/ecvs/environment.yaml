@@ -23,7 +23,7 @@ dependencies:
   # -----
   # Python dependency
   # .....
-  - importlib
+  # - importlib
   - deprecated
   - joblib
   - requests
