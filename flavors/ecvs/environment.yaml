@@ -31,14 +31,16 @@ dependencies:
   - matplotlib
   - numpy
   - pandas
-  - geopandas
   - netCDF4
   - h5netcdf
   - dask
   - xarray
   - shapely
-  - rasterio
+  - pyogrio
+  - pyproj
   - gdal
+  - rasterio
+  - geopandas
   # 01-Access-AnaEE
   - pytz
   - idna
@@ -63,7 +65,6 @@ dependencies:
   - openapi-spec-validator
   # EPOS
   - owslib
-  - pyproj
   # ICOS
   # icoscp_core
   # beacon_api
