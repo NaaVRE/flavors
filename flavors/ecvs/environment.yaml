@@ -1,5 +1,6 @@
 name: ecvs
 channels:
+  - conda
   - conda-forge
 dependencies:
   # naavre-fl-*-cell-build
