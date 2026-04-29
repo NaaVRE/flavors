@@ -21,6 +21,23 @@ dependencies:
     - SecretsProvider
   # user packages for this flavor
   # -----
+  # Python dependency
+  # .....
+  - importlib
+  - deprecated
+  - joblib
+  - requests
+  - urllib3
+  - matplotlib
+  - numpy
+  - pandas
+  - geopandas
+  - netCDF4
+  - h5netcdf
+  - dask
+  - xarray
+  - shapely
+  - rasterio
   # 01-Access-AnaEE
   - pytz
   - idna
@@ -33,19 +50,24 @@ dependencies:
   - sniffio
   - pycparser 
   - pyparsing
-  - requests
-  - urllib3
-  - matplotlib
-  - numpy
-  - pandas
-  - shapely
   - pillow
   - kiwisolver
   # 02-Access-Argo
   - argopy
   - sparqlwrapper
-  # - geopandas=0.10.2
-  # - rdflib=6.1.1
+  # - rdflib
+  # seadatanet
+  - cartopy
+  # envri-hub
+  - openapi-spec-validator
+  # beacon_api
+  - pyarrow
+  - geopy
+  - mercantile
+  - xyzservices
+  - contextily
+  # R dependency
+  # .....
   # # - r-devtools=2.4.5
   # - r-tidyverse
   # # - r-dplyr
