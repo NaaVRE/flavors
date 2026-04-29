@@ -1,6 +1,5 @@
 name: ecvs
 channels:
-  - conda
   - conda-forge
 dependencies:
   # naavre-fl-*-cell-build
@@ -41,7 +40,7 @@ dependencies:
   - pyproj
   - libgdal
   - gdal
-  - rasterio
+  # - rasterio
   - geopandas
   # 01-Access-AnaEE
   - pytz
