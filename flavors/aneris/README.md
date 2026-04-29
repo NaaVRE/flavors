@@ -35,7 +35,7 @@ docker rmi naavre-fl-aneris-jupyter:local
 docker build . -f flavors/aneris/local.Dockerfile --progress plain --build-arg CONDA_ENV_FILE=flavors/aneris/environment.yaml -t naavre-fl-aneris-jupyter:local
 
 docker system prune -f
-docker run -it -p 8888:8888 -e JUPYTER_TOKEN="mytoken" --name aneris-jupyter --volume="//c/DockerShare/ANERIS_DNA:/home/jovyan" naavre-fl-aneris-jupyter:local
+docker run -it -p 8888:8888 -e JUPYTER_TOKEN="mytoken" --name aneris-jupyter --volume="//c/DockerShare/ANERIS:/home/jovyan" naavre-fl-aneris-jupyter:local
 
 docker exec -it aneris-jupyter bash
 ```
