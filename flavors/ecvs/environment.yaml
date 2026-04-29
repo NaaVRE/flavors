@@ -38,6 +38,7 @@ dependencies:
   - shapely
   - pyogrio
   - pyproj
+  - libgdal
   - gdal
   - rasterio
   - geopandas
