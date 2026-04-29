@@ -36,10 +36,10 @@ dependencies:
   - dask
   - xarray
   - shapely
-  - pyogrio
-  - pyproj
-  - libgdal
-  - gdal
+  # - pyogrio
+  # - pyproj
+  # - libgdal
+  # - gdal
   # - rasterio
   - geopandas
   # 01-Access-AnaEE
