@@ -26,6 +26,7 @@ dependencies:
   - openpyxl
   - pulp
   - matplotlib
+  - glpk
   - pip:
     - SecretsProvider
 
