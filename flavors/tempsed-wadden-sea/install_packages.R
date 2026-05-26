@@ -13,3 +13,11 @@ library("tidyterra")
 devtools::install_github('TempSED/TempSED', build_vignettes = TRUE, dependencies = FALSE)
 require('TempSED')
 
+pak::pkg_install("LTER-LIFE/dtR/dtRtools")
+library("dtRtools")
+
+pak::pkg_install("LTER-LIFE/dtR/dtRwad")
+library("dtRwad")
+
+pak::pkg_install("LTER-LIFE/dtR/dtRprimprod")
+library("dtRprimprod")
