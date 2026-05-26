@@ -27,6 +27,7 @@ dependencies:
   - pulp
   - matplotlib
   - glpk
+  - pyomo
   - pip:
     - SecretsProvider
 
