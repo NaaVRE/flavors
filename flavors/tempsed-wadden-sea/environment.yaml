@@ -46,6 +46,9 @@ dependencies:
   - r-rootsolve
   - r-plot3d
   - r-shape
+  - r-ncdf4
+  - r-readxl
+  - r-readr
   - pip:
     # user packages for all flavors
     - SecretsProvider
