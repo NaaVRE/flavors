@@ -145,9 +145,15 @@ When building environments (or "flavors") with both Conda and pip, dependency co
 
 If flavor build failure persists, install the packages only available on pip in a clean environment and list the dependencies:
 ```shell
+# python
 !pip install pipdeptree
 !pipdeptree -p <package-name>
 ```
+```
+# R
+pak::pkg_deps_tree("<library-name>")
+``` 
+
 Add as much of the dependencies as possible in conda. 
 
 Retry building the flavor. 
