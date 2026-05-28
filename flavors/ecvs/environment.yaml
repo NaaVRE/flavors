@@ -74,6 +74,11 @@ dependencies:
   - mercantile
   - xyzservices
   - contextily
+  # Meta learning experiment
+  - python-dotenv
+  - scikit-learn
+  - tensorflow
+  - keras
   # R dependency
   # .....
   # # - r-devtools=2.4.5
