@@ -29,7 +29,6 @@ dependencies:
   - paho-mqtt
   - nbformat
   - cython
-  - intel-fortran-rt
   - r-pak
   - r-desolve
   - r-rootsolve
