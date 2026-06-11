@@ -778,6 +778,7 @@ dependencies:
   - stack_data=0.6.3
   - traitlets=5.14.3
   - widgetsnbextension=4.0.15
+  - r-tidyterra
   - pip:
     # pip package for all flavors
     - SecretsProvider
