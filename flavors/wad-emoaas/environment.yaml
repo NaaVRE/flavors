@@ -13,17 +13,24 @@ dependencies:
   - jq>=1.8
   - minio=7.2.15
   - pip=25.0.1
-  - python>=3.8
+  - python==3.11.15
   - r=4.4
   - r-secretsprovider
   - r-getpass
   - r-aws.s3
   # user packages for this flavor
+  - bottleneck
   - dask
+  - netcdf4
+  - xarray
+  - cartopy
+  - cmocean
+  - scienceplots
+  - imageio
+  - seaborn
   - numpy
   - pandas
   - scipy
-  - netCDF4
   - h5netcdf
   - h5py
   - cftime
@@ -45,5 +52,6 @@ dependencies:
   - contextily    # For basemap plotting with Matplotlib
   - copernicusmarine
   - nbstripout
+  - openpyxl
   - pip:
     - SecretsProvider
