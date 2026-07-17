@@ -5,6 +5,7 @@
 	- [Build \& run](#build--run)
 		- [Build](#build)
 		- [Run](#run)
+		- [Run local](#run-local)
 
 <!-- vscode-markdown-toc-config
 	numbering=false
@@ -32,8 +33,13 @@ docker build . -f flavors/aneris/jupyter.Dockerfile --progress plain      --buil
 
 docker system prune -f
 docker rmi naavre-fl-aneris-jupyter:local
-docker build . -f flavors/aneris/local.Dockerfile --progress plain --build-arg CONDA_ENV_FILE=flavors/aneris/environment.yaml -t naavre-fl-aneris-jupyter:local
 
+docker build . -f flavors/aneris/local.Dockerfile --progress plain --build-arg CONDA_ENV_FILE=flavors/aneris/environment.yaml -t naavre-fl-aneris-jupyter:local
+```
+
+### <a name='Run'></a>Run local
+
+```shell
 docker system prune -f
 docker run -it -p 8888:8888 -e JUPYTER_TOKEN="mytoken" --name aneris-jupyter --volume="//c/DockerShare/ANERIS:/home/jovyan" naavre-fl-aneris-jupyter:local
 
