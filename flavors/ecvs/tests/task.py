@@ -21,3 +21,7 @@ filename = "/tmp/names_" + id + ".json"
 file_names = open(filename, "w")
 file_names.write(json.dumps(names))
 file_names.close()
+
+# Check that a Hub object can be created
+from envrihub import Hub
+hub = Hub()

@@ -64,6 +64,7 @@ dependencies:
   - cartopy
   # envri-hub
   - openapi-spec-validator
+  - erddapy==3.1.1
   # EPOS
   - owslib
   # ICOS
@@ -86,3 +87,5 @@ dependencies:
   # # - r-dplyr
   # # - r-tidyr
   # - r-vegan
+  - pip:
+    - envrihub==0.1.3
