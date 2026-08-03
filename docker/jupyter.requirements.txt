@@ -4,6 +4,6 @@ NaaVRE-containerizer-jupyterlab==0.5.1
 NaaVRE-workflow-jupyterlab==0.6.2
 ipywidgets>=8.1.7
 jupyter-archive>=3.4.0
-jupyterlab-git>=0.54.0
+jupyterlab-git>=0.54.1
 nbgitpuller>=1.2.2
 voila>=0.5.7
