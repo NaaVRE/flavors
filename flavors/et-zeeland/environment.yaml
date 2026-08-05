@@ -29,6 +29,7 @@ dependencies:
   - paho-mqtt
   - nbformat
   - cython
+  - openpyxl
   - r-pak
   - r-desolve
   - r-rootsolve
