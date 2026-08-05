@@ -21,7 +21,7 @@ dependencies:
   - pip:
     - SecretsProvider
   # user packages for this flavor
-  - r-pak
+  - r-pak==0.10.0
   - r-rstac
   - r-terra
   - r-dplyr
