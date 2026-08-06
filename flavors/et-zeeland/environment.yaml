@@ -30,7 +30,8 @@ dependencies:
   - nbformat
   - cython
   - openpyxl
-  - r-pak
+  - r-pak==0.10.0
+  - r-remotes
   - r-desolve
   - r-rootsolve
   - r-plot3d
