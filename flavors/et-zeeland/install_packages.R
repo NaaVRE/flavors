@@ -1,5 +1,5 @@
 pak::pkg_install("ReacTran")
 library("ReacTran")
 
-pak::pkg_install("TempSED/TempSED")
-require("TempSED")
+remotes::install_github("TempSED/TempSED", build_vignettes = TRUE)
+library("TempSED")
