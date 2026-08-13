@@ -18,9 +18,7 @@ dependencies:
   - r-aws.s3
   # user packages for this flavor
   # (intentionally empty in vanilla)
-  - hdf5
   - python>=3.8
-  - proj
   - gsl
   - pkg-config
   - bzip2
@@ -90,3 +88,11 @@ dependencies:
   - r-glue
   - r-httr
   - r-xml2
+# vol2birdR
+  - r-base
+  - proj
+  - r-rcpp
+  - r-assertthat
+  - r-pkgbuild
+  - r-rlang
+  - hdf5=2.1.0=nompi_hc529623_111
