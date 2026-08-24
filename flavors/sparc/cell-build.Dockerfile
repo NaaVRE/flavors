@@ -1,4 +1,4 @@
-FROM mambaorg/micromamba:2.8.1
+FROM mambaorg/micromamba:2.9.0
 
 RUN micromamba install -y -n base -c conda-forge conda-pack && \
     micromamba clean --all --yes

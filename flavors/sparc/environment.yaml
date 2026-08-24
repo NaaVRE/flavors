@@ -20,7 +20,7 @@ dependencies:
   - r-aws.s3
   # user packages for this flavor
   - earthengine-api
-  - r-pak==0.10.0
+  - r-pak
   - r-terra
   - r-sf
   - r-dplyr
