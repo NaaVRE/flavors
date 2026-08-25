@@ -13,7 +13,7 @@ dependencies:
   - jq>=1.8
   - minio>=7.2.15
   - pip>=25.0.1
-  - python>=3.8
+  - python>=3.11,<3.14
   # - r=4.4
   # - r-secretsprovider
   # - r-getpass
@@ -26,8 +26,8 @@ dependencies:
   - dask
   - dask-core
   - distro
-  - gcc=12.1.0
-  - gdal=3.5.0
+  - gcc
+  - gdal
   - html5lib
   - Jinja2
   - laspy
