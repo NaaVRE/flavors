@@ -13,7 +13,7 @@ dependencies:
   - jq>=1.8
   - minio=7.2.15
   - pip>=25.0.1
-  - python>=3.10
+  - python>=3.11
   - r=4.4
   - r-secretsprovider
   - r-getpass
@@ -23,7 +23,6 @@ dependencies:
   - pandas
   - matplotlib
   - cartopy
-  - obspy
   - bottleneck
   - h5py
   - nest-asyncio
@@ -36,7 +35,6 @@ dependencies:
   - hdf5plugin
   - msgpack-python
   - numba
-  - obspy
   - pandas
   - plotly
   - pyzmq
