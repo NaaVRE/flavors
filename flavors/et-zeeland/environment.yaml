@@ -30,6 +30,8 @@ dependencies:
   - nbformat
   - cython
   - openpyxl
+  - openmeteo_requests
+  - requests_cache
   - r-pak
   - r-remotes
   - r-desolve
@@ -41,5 +43,9 @@ dependencies:
   - r-tidyr
   - r-lubridate
   - r-ncdf4
+  - r-devtools=2.5.0
   - pip:
     - SecretsProvider
+    # For this flavor
+    - retry-requests
+    - pyrealm
