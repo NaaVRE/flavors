@@ -20,6 +20,7 @@ dependencies:
   - r-aws.s3
   # user packages for this flavor
   - earthengine-api
+  - geemap
   - r-pak
   - r-terra
   - r-sf
