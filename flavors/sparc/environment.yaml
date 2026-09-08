@@ -27,6 +27,7 @@ dependencies:
   - r-dplyr
   - r-randomforest
   - r-writexl
+  - r-rgbif
   # dependencies for CRAN installed blockCV
   - r-sftime
   - r-fnn
