@@ -1,5 +1,0 @@
-flavor_name: biotope
-build_jupyter: True
-build_cell_base: True
-free_disk_space: True
-aliases: []
