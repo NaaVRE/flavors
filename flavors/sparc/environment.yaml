@@ -21,6 +21,7 @@ dependencies:
   # user packages for this flavor
   - earthengine-api
   - geemap
+  - geedim
   - r-pak
   - r-terra
   - r-sf
