@@ -29,12 +29,23 @@ dependencies:
   - r-randomforest
   - r-writexl
   - r-rgbif
+  - r-officer
+  - r-openxlsx
   # dependencies for CRAN installed blockCV
   - r-sftime
   - r-fnn
   - r-gstat
   - r-cowplot
   - r-automap
+  # dependencies for CRAN installed GeoThinneR
+  - r-data.table
+  - r-doparallel
+  - r-fields
+  - r-foreach
+  - r-matrixstats
+  - r-nabor
+  - r-sf
+  - r-terra
   - pip:
     # user packages for all flavors
     - SecretsProvider
