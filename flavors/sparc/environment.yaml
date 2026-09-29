@@ -31,6 +31,8 @@ dependencies:
   - r-rgbif
   - r-officer
   - r-openxlsx
+  - r-maxnet
+  - r-glmnet
   # dependencies for CRAN installed blockCV
   - r-sftime
   - r-fnn
