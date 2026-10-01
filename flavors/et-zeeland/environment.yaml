@@ -32,6 +32,8 @@ dependencies:
   - openpyxl
   - openmeteo_requests
   - requests_cache
+  - seaborn
+  - pyet
   - r-pak
   - r-remotes
   - r-desolve
