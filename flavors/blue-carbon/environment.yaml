@@ -21,9 +21,8 @@ dependencies:
   - pip:
     - SecretsProvider
   # user packages for this flavor
-  # -----
-  # Blue Carbon
-  # -----
+  # v1
+  # =====
   - libgdal-netcdf
   # - r-devtools=2.4.5
   # common packages
@@ -35,3 +34,29 @@ dependencies:
   - r-mgcv
   - r-dplyr
   - r-stringr
+  # v2, GPR
+  # =====
+  - r-GauPro
+  - r-xgboost
+  - r-randomForest
+  - r-terra
+  # Additional packages
+  # - r-blockCV
+  - r-digest
+  - r-FNN
+  - r-ggplot2
+  - r-ggtext
+  - r-here
+  - r-iml
+  - r-maps
+  - r-ncdf4
+  - r-patchwork
+  - r-progress
+  - r-readr
+  - r-readxl
+  - r-renv
+  - r-scales
+  - r-sf
+  - r-tibble
+  - r-tidyr
+  - r-tidyverse
