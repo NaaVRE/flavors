@@ -52,6 +52,10 @@ dependencies:
   - pyparsing
   - pillow
   - kiwisolver
+  # 02-Access-Argo
+  - argopy
+  - sparqlwrapper
+  # - rdflib
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
