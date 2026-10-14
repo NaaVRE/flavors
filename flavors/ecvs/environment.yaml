@@ -72,10 +72,10 @@ dependencies:
   - xyzservices
   - contextily
   # Meta learning experiment
-  # - python-dotenv
-  - scikit-learn
-  - tensorflow
-  - keras
+  - python-dotenv
+  # - scikit-learn
+  # - tensorflow
+  # - keras
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
