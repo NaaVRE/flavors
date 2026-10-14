@@ -61,6 +61,16 @@ dependencies:
   # envri-hub
   - openapi-spec-validator
   - erddapy==3.1.1
+  # EPOS
+  - owslib
+  # ICOS
+  # icoscp_core
+  # beacon_api
+  - pyarrow
+  - geopy
+  - mercantile
+  - xyzservices
+  - contextily
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
