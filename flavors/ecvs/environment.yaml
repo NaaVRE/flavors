@@ -17,8 +17,6 @@ dependencies:
   - r-secretsprovider
   - r-getpass
   - r-aws.s3
-  - pip:
-    - SecretsProvider
   # user packages for this flavor
   # -----
   # Python dependency
@@ -88,4 +86,5 @@ dependencies:
   # # - r-tidyr
   # - r-vegan
   - pip:
+    - SecretsProvider
     - envrihub==0.1.3
