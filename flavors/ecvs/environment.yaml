@@ -19,8 +19,6 @@ dependencies:
   - r-aws.s3
   # user packages for this flavor
   # -----
-  # Python dependency
-  # .....
   # - importlib
   - deprecated
   - joblib
@@ -40,51 +38,6 @@ dependencies:
   # - gdal
   # - rasterio
   - geopandas
-  # 01-Access-AnaEE
-  - pytz
-  - idna
-  - cycler
-  - fonttools
-  - contourpy
-  - packaging
-  - pure_eval
-  - executing
-  - sniffio
-  - pycparser 
-  - pyparsing
-  - pillow
-  - kiwisolver
-  # 02-Access-Argo
-  - argopy
-  - sparqlwrapper
-  # - rdflib
-  # seadatanet
-  - cartopy
-  # envri-hub
-  - openapi-spec-validator
-  - erddapy==3.1.1
-  # EPOS
-  - owslib
-  # ICOS
-  # icoscp_core
-  # beacon_api
-  - pyarrow
-  - geopy
-  - mercantile
-  - xyzservices
-  - contextily
-  # Meta learning experiment
-  - python-dotenv
-  - scikit-learn
-  - tensorflow
-  - keras
-  # R dependency
-  # .....
-  # # - r-devtools=2.4.5
-  # - r-tidyverse
-  # # - r-dplyr
-  # # - r-tidyr
-  # - r-vegan
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
