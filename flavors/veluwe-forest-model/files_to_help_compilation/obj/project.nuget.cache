@@ -1,0 +1,23 @@
+{
+  "version": 2,
+  "dgSpecHash": "R+C/mYsyXCg=",
+  "success": false,
+  "projectFilePath": "g:\\My Drive\\2025-LifeWatchERIC_VLIC\\Code\\VLIC-NaaVRE\\NaaVRE-flavors\\flavors\\veluwe-forest-model\\files_to_help_compilation\\Forest-Roads-Extension.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\quan.pan\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\quan.pan\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1101",
+      "level": "Error",
+      "message": "Unable to find package Landis.Core. No packages exist with this id in source(s): nuget.org",
+      "projectPath": "g:\\My Drive\\2025-LifeWatchERIC_VLIC\\Code\\VLIC-NaaVRE\\NaaVRE-flavors\\flavors\\veluwe-forest-model\\files_to_help_compilation\\Forest-Roads-Extension.csproj",
+      "filePath": "g:\\My Drive\\2025-LifeWatchERIC_VLIC\\Code\\VLIC-NaaVRE\\NaaVRE-flavors\\flavors\\veluwe-forest-model\\files_to_help_compilation\\Forest-Roads-Extension.csproj",
+      "libraryId": "Landis.Core",
+      "targetGraphs": [
+        ".NETStandard,Version=v2.0"
+      ]
+    }
+  ]
+}
