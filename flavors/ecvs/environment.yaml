@@ -38,6 +38,20 @@ dependencies:
   # - gdal
   # - rasterio
   - geopandas
+  # 01-Access-AnaEE
+  - pytz
+  - idna
+  - cycler
+  - fonttools
+  - contourpy
+  - packaging
+  - pure_eval
+  - executing
+  - sniffio
+  - pycparser 
+  - pyparsing
+  - pillow
+  - kiwisolver
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
