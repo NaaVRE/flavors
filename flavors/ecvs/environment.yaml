@@ -72,7 +72,7 @@ dependencies:
   - xyzservices
   - contextily
   # Meta learning experiment
-  - python-dotenv
+  # - python-dotenv
   - scikit-learn
   - tensorflow
   - keras
