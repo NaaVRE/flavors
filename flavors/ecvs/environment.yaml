@@ -56,6 +56,11 @@ dependencies:
   - argopy
   - sparqlwrapper
   # - rdflib
+  # seadatanet
+  - cartopy
+  # envri-hub
+  - openapi-spec-validator
+  - erddapy==3.1.1
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
