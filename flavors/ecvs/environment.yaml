@@ -73,8 +73,8 @@ dependencies:
   - contextily
   # Meta learning experiment
   # - python-dotenv
-  - scikit-learn
-  # - tensorflow
+  # - scikit-learn
+  - tensorflow
   # - keras
   - pip:
     - SecretsProvider
