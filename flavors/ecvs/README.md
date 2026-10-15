@@ -47,3 +47,12 @@ docker exec -it ecvs-jupyter bash
 ```
 
 http://localhost:8888/lab?token=mytoken
+
+
+## Fix
+
+### tensorflow
+
+#### Cause
+
+The conda-forge tensorflow package pulls in a huge dependency tree (CPU and CUDA build variants, libtensorflow, keras, protobuf, grpcio, abseil-cpp, h5py, and so on). Any extra pin on numpy, protobuf, or Python can send the solver into a very long search.
