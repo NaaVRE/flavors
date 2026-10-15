@@ -79,3 +79,5 @@ dependencies:
   - pip:
     - SecretsProvider
     - envrihub==0.1.3
+    - tensorflow-cpu
+
