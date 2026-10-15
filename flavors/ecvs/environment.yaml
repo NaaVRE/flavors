@@ -19,6 +19,10 @@ dependencies:
   - r-aws.s3
   # user packages for this flavor
   # -----
+  - pip:
+    - SecretsProvider
+    - envrihub==0.1.3
+    - tensorflow-cpu
   # - importlib
   - deprecated
   - joblib
@@ -76,8 +80,4 @@ dependencies:
   - scikit-learn
   # - tensorflow
   - keras
-  - pip:
-    - SecretsProvider
-    - envrihub==0.1.3
-    - tensorflow-cpu
 
