@@ -76,7 +76,7 @@ dependencies:
   - python-dotenv
   - scikit-learn
   # - tensorflow
-  - tensorflow-cpu
+  # - tensorflow-cpu
   - keras
   - pip:
     - SecretsProvider
