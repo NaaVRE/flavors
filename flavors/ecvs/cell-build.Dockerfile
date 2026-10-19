@@ -8,6 +8,6 @@ COPY --chown=mambauser:mambauser ${CONDA_ENV_FILE?} environment.yaml
 RUN micromamba create -y -n venv -f environment.yaml
 
 RUN micromamba env list
-RUN micromamba install -y -n venv -c conda-forge tensorflow-cpu
+RUN micromamba install -y -n venv -c conda-forge tensorflow
 
 RUN micromamba clean --all --yes
