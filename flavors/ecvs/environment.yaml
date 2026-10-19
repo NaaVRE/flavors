@@ -12,7 +12,7 @@ dependencies:
   - git=2.49.0
   - minio=7.2.15
   - pip=25.0.1
-  - python>=3.8
+  - python>=3.8, <=3.12
   - r=4.4
   - r-secretsprovider
   - r-getpass
