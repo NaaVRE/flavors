@@ -1,0 +1,8 @@
+is_global = true
+build_property.RootNamespace = Landis.Extension.ForestRoadsSimulation
+build_property.ProjectDir = g:\My Drive\2025-LifeWatchERIC_VLIC\Code\VLIC-NaaVRE\NaaVRE-flavors\flavors\veluwe-forest-model\files_to_help_compilation\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.CsWinRTUseWindowsUIXamlProjections = false
+build_property.EffectiveAnalysisLevelStyle = 
+build_property.EnableCodeStyleSeverity = 

@@ -1,4 +1,4 @@
-FROM mambaorg/micromamba:2.0.8
+FROM mambaorg/micromamba:2.9.0
 
 RUN micromamba install -y -n base -c conda-forge conda-pack && \
     micromamba clean --all --yes
@@ -6,4 +6,5 @@ RUN micromamba install -y -n base -c conda-forge conda-pack && \
 ARG CONDA_ENV_FILE
 COPY --chown=mambauser:mambauser ${CONDA_ENV_FILE?} environment.yaml
 RUN micromamba create -y -n venv -f environment.yaml && \
+    micromamba install -y -n venv -c conda-forge tensorflow && \
     micromamba clean --all --yes
