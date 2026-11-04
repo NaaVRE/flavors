@@ -5,3 +5,5 @@ source /venv/bin/activate || eval "$(conda shell.bash activate wad-emoaas)"
 dir="${0%/*}"
 find "$dir" -name "*.py" -print0 | xargs --null -I "{}" python "{}"
 find "$dir" -name "*.R" -print0 | xargs --null -I "{}" Rscript "{}"
+
+gotm-run --version &> version || true
