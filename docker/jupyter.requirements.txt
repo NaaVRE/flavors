@@ -7,3 +7,4 @@ jupyter-archive>=3.4.0
 jupyterlab-git>=0.54.1
 nbgitpuller>=1.2.2
 voila>=0.5.7
+jupyter-ai>=3.2.0

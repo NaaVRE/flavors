@@ -7,6 +7,13 @@ RUN pip install -r requirements.txt
 RUN mamba install --yes "nb_conda_kernels>=2.5.0" && \
     mamba clean --all --yes
 
+USER root
+
+RUN curl -fsSL https://gh.io/copilot-install | bash \
+    && copilot --version
+
+USER ${NB_USER}
+
 # Disable "Would you like to get notified about official Jupyter news?"
 # https://jupyterlab.readthedocs.io/en/stable/user/announcements.html
 RUN jupyter labextension disable "@jupyterlab/apputils-extension:announcements"
