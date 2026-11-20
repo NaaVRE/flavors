@@ -1,4 +1,4 @@
-FROM qingzfly/getm-wad-container:fMAsink AS getm-wad
+FROM qingzfly/getm-wad-container:spawning.1.0  AS getm-wad
 
 FROM ubuntu:24.04
 
