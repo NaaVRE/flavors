@@ -11,7 +11,7 @@ dependencies:
   - git=2.49.0
   - jq>=1.8
   - minio=7.2.15
-  - python>=3.8
+  - python>=3.8,<3.15
   - r-secretsprovider=1.0.0=r43hc72bb7e_0
   - r-getpass
   - r-aws.s3

@@ -14,7 +14,7 @@ dependencies:
   - jq>=1.8
   - minio=7.2.15
 #  - pip=25.0.1 replaced by user packages for this flavor: pip=26.0.1=pyh8b19718_0
-  - python>=3.8
+  - python>=3.8,<3.15
 #  - r=4.4 replaced by user packages for this flavor: r=4.3=r43hd8ed1ab_1008
   - r-secretsprovider
   - r-getpass

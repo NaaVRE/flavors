@@ -18,7 +18,7 @@ dependencies:
   - r-aws.s3
   # user packages for this flavor
   # (intentionally empty in vanilla)
-  - python>=3.8
+  - python>=3.8,<3.15
   - gsl
   - pkg-config
   - bzip2
